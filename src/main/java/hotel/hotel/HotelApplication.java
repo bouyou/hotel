@@ -21,6 +21,7 @@ public class HotelApplication {
 		ChambreRepository repo = context.getBean(ChambreRepository.class);
 
 		List<Chambre> toto = repo.findAll();
+		System.out.println("===> " + toto.stream().count());
 		System.out.println("hello");
 
 	}
