@@ -8,7 +8,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "chambre")
-//@Data
+@Data
 public class Chambre implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -32,7 +32,7 @@ public class Chambre implements Serializable {
 
     @Column(name = "id_hotel", nullable = false)
     private Integer idHotel;
-
+    /*
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -84,4 +84,6 @@ public class Chambre implements Serializable {
     public void setIdHotel(Integer idHotel) {
         this.idHotel = idHotel;
     }
+    */
+
 }
