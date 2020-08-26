@@ -48,4 +48,7 @@ public class Reservation implements Serializable {
     @Column(name = "id_client", nullable = false)
     private Integer idClient;
 
+    public Integer getIdClient() {
+        return idClient;
+    }
 }
