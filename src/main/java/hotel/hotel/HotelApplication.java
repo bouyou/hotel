@@ -37,16 +37,19 @@ public class HotelApplication {
 		/*****Tests*****/
 
 
-		System.out.println("Salut les tarlouzes !!!");
+
 
 
 		//Example
 		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
 		ChambreRepository repo = context.getBean(ChambreRepository.class);
 		List<Chambre> toto = repo.findAll();
+		System.out.println("Salut les tarlouzes !!!");
 		System.out.println("=nombre de chambre==> " + toto.size());
-		//logger.info("teststststs");
 
+		logger.info("Allez on se bouge le cul !! ");
+		logger.debug("debugtest:");
+		logger.error("error test:");
 	    /*
 		Hotel myHotel = new Hotel()
 		ate myDate = Date();
