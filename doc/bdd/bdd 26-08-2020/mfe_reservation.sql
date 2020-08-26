@@ -39,7 +39,7 @@ CREATE TABLE `reservation` (
   KEY `reservation_client0_FK` (`id_client`),
   CONSTRAINT `reservation_chambre_FK` FOREIGN KEY (`id_chambre`) REFERENCES `chambre` (`id`),
   CONSTRAINT `reservation_client0_FK` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
