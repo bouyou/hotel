@@ -20,7 +20,7 @@ import java.util.List;
 @SpringBootApplication
 public class HotelApplication {
 
-	private static Logger logger = LoggerFactory.getLogger("test");
+//	private static Logger logger = LoggerFactory.getLogger("test");
 
 	public static void main(String[] args) {
 
@@ -33,7 +33,7 @@ public class HotelApplication {
 		Menu.showMainMenu();
 		//
 
-	   logger.info("teststststs");
+	  // logger.info("teststststs");
 
 
 
@@ -45,8 +45,8 @@ public class HotelApplication {
 		//Example
 
 
-		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
-		ChambreRepository repo = context.getBean(ChambreRepository.class);
+		//ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
+		//ChambreRepository repo = context.getBean(ChambreRepository.class);
 
 
 	   /*
@@ -59,9 +59,9 @@ public class HotelApplication {
 		myServiceHotel.create(myHotel);
 		*/
 
-		List<Chambre> toto = repo.findAll();
+		//List<Chambre> toto = repo.findAll();
 
-		System.out.println("===> " + toto.stream().count());
+		//System.out.println("===> " + toto.stream().count());
 		System.out.println("hello");
 
 	}

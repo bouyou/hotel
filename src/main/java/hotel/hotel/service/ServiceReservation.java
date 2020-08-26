@@ -41,13 +41,13 @@ public class ServiceReservation {
     }
 
 
-    public List<Reservation>  getReservationByClientId(int idClient){
+    public List<Reservation> getReservationByClientId(Integer id){
 
         List<Reservation> listReservation = new LinkedList<>();
         //je recupere toute les reservations
         List<Reservation> allReservations = this.repo.findAll();
         for (Reservation r : allReservations) {
-            if(r.getIdClient()==idClient){
+            if(r.getIdClient() == id){
                 listReservation.add(r);
             }
         }
