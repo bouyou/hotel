@@ -38,11 +38,6 @@ public class ServiceClient {
         this.clientRepository.save(client);
     }
 
-    public boolean hasReservation(int idClient){
 
-         // List<Reservation> list =  reservationRepository.getr;
-         //   reservationRepository.
-            return true;
-    }
 
 }

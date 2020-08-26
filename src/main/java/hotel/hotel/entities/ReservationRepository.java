@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ReservationRepository extends JpaRepository<Reservation, Integer>, JpaSpecificationExecutor<Reservation> {
 
-   List<Reservation> getReservationByClientId(Integer id);
+   List<Reservation> getReservationByIdClient(int id);
 
 
 }

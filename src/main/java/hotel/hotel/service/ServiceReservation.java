@@ -41,7 +41,7 @@ public class ServiceReservation {
     }
 
 
-    public List<Reservation> getReservationByClientId(Integer id){
+    public List<Reservation> getReservationByIdClient(int id){
 
         List<Reservation> listReservation = new LinkedList<>();
         //je recupere toute les reservations
