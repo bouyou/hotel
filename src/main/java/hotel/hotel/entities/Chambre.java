@@ -4,7 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+//import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name = "chambre")
@@ -24,7 +25,10 @@ public class Chambre implements Serializable {
     @Column(name = "nbPax", nullable = false)
     private Integer nbPax;
 
-    @Column(name = "dateModif", nullable = false)
+    @Column(name = "dateAjout", nullable = false)
+    private Date dateAjout;
+
+    @Column(name = "dateModif")
     private Date dateModif;
 
     @Column(name = "dateDelete")
@@ -32,10 +36,6 @@ public class Chambre implements Serializable {
 
     @Column(name = "id_hotel", nullable = false)
     private Integer idHotel;
-    /*
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public Integer getId() {
         return id;
@@ -61,6 +61,14 @@ public class Chambre implements Serializable {
         this.nbPax = nbPax;
     }
 
+    public Date getDateAjout() {
+        return dateAjout;
+    }
+
+    public void setDateAjout(Date dateAjout) {
+        this.dateAjout = dateAjout;
+    }
+
     public Date getDateModif() {
         return dateModif;
     }
@@ -84,6 +92,7 @@ public class Chambre implements Serializable {
     public void setIdHotel(Integer idHotel) {
         this.idHotel = idHotel;
     }
-    */
+
+
 
 }
