@@ -13,10 +13,10 @@ public class Menu<Static> {
         System.out.println("Menu Principal : ");
         do {
             System.out.println("Sommaire");
-            System.out.println("1 : Gestion ClientS");
+            System.out.println("1 : Gestion Clients");
             System.out.println("2 : Gestion Hotels");
             System.out.println("3 : Gestion Chambres");
-            System.out.println("4 : Gestion Réservations");
+            System.out.println("4 : Gestion Reservations");
             System.out.println("0 : Quitter ");
             System.out.println("Choix : ");
             choix = clavier.nextInt();
@@ -37,9 +37,10 @@ public class Menu<Static> {
     private static void showGestionClient() {
         System.out.println("je suis dans menu Gestion Client");
         do {
-            System.out.println("1 : Ajouter un client");
+            System.out.println("1 : Ajouter un Client");
             System.out.println("2 : Modifier un Client");
-            System.out.println("2 : Supprimer un Client");
+            System.out.println("3 : Supprimer un Client");
+            System.out.println("4 : Retour au menu principal");
             System.out.println("0 : Quitter ");
             System.out.println("Choix : ");
             choix = clavier.nextInt();
@@ -50,12 +51,14 @@ public class Menu<Static> {
                     break;
                 case 3 : Menu.showSupprClient();
                     break;
+                case 4 : Menu.showMainMenu();
+                    break;
             }
         }
         while(choix!=0);
     }
     private static void showAjoutClient() {
-        System.out.println("je suis dansajouter un Client");
+        System.out.println("je suis dans ajouter un Client");
     }
     private static void showModifClient() {
         System.out.println("je suis dans modification d'un Client");
@@ -71,7 +74,8 @@ public class Menu<Static> {
         do {
             System.out.println("1 : Ajouter un Hotel");
             System.out.println("2 : Modifier un Hotel");
-            System.out.println("2 : Supprimer un Hotel");
+            System.out.println("3 : Supprimer un Hotel");
+            System.out.println("4 : Retour au menu principal");
             System.out.println("0 : Quitter ");
             System.out.println("Choix : ");
             choix = clavier.nextInt();
@@ -81,6 +85,8 @@ public class Menu<Static> {
                 case 2 : Menu.showModifHotel();
                     break;
                 case 3 : Menu.showSupprHotel();
+                    break;
+                case 4 : Menu.showMainMenu();
                     break;
             }
         }
