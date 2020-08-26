@@ -56,14 +56,10 @@ public class Validation {
      */
     private static String formatResponse(String label, String[] response ){
 
-            /*
+        /*
         System.out.println("0 -> " + response[0]);
         System.out.println("1 -> " + response[1]);
         System.out.println("2 -> " + response[2]);
-
-
-
-
         /*
         System.out.println("0 -> " + m0);
         System.out.println("1 -> " + m1);

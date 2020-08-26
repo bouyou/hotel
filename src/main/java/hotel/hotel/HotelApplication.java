@@ -25,22 +25,26 @@ public class HotelApplication {
 
 	public static void main(String[] args) {
 
-		//Dont touch !!!!!
+		/******Dont touch !!!!!****/
 		System.setProperty("spring.devtools.restart.enabled", "false");
 		SpringApplication.run(HotelApplication.class, args);
 		//Menu
 		Menu.showMainMenu();
-		//
+		/******* Fin dont touch *****/
 
-	   logger.info("teststststs");
+
+
+		/*****Tests*****/
+
 
 		//Example
 		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
 		ChambreRepository repo = context.getBean(ChambreRepository.class);
+		List<Chambre> toto = repo.findAll();
+		System.out.println("===> " + toto.size());
+		logger.info("teststststs");
 
-
-
-	   /*
+	    /*
 		Hotel myHotel = new Hotel()
 		ate myDate = Date();
 		myHotel.setDateAjout();
@@ -50,10 +54,9 @@ public class HotelApplication {
 		myServiceHotel.create(myHotel);
 		*/
 
-		List<Chambre> toto = repo.findAll();
 
-		System.out.println("===> " + toto.size());
-		System.out.println("hello");
+		//Tests validation
+
 		//System.out.println("value ?");
 		//Scanner scanner = new Scanner(System.in);
 
@@ -103,17 +106,7 @@ public class HotelApplication {
 					c.setNumero("1245");
 
 					Chambre a  = chambreRepository.save(c);
-
 				    chambreRepository.findAll().forEach(System.out::println);
-
-
-
-					//NULL,'1', 3, d, NULL ,NULL , 1);
-			/*
-			User user2 = new User("Jenny", "jenny@domain.com");
-			userRepository.save(user1);
-			userRepository.save(user2);
-			userRepository.findAll().forEach(System.out::println);*/
 		};
 	}
 
