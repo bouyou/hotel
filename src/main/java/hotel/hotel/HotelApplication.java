@@ -1,8 +1,7 @@
 package hotel.hotel;
 
-import hotel.hotel.entities.Chambre;
-import hotel.hotel.entities.ChambreRepository;
-import hotel.hotel.entities.Hotel;
+import hotel.hotel.entities.*;
+import hotel.hotel.service.ServiceClient;
 import hotel.hotel.service.ServiceHotel;
 import hotel.hotel.utils.Menu;
 
@@ -15,6 +14,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @SpringBootApplication
@@ -34,13 +34,6 @@ public class HotelApplication {
 		//
 
 	  // logger.info("teststststs");
-
-
-
-
-
-
-
 
 		//Example
 
@@ -63,6 +56,32 @@ public class HotelApplication {
 
 		//System.out.println("===> " + toto.stream().count());
 		System.out.println("hello");
+
+
+		//test de delete client
+		/*
+		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
+		ClientRepository repoClient = context.getBean(ClientRepository.class);
+		Client clientToDelete = repoClient.getOne(12);
+		ServiceClient serviceClient = new ServiceClient();
+		serviceClient.delete(clientToDelete);
+		*/
+
+
+		//test de create client
+		/*
+		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
+		ClientRepository repoClient = context.getBean(ClientRepository.class);
+		Client newClient = new Client();
+		newClient.setNom("TEST2");
+		newClient.setPrenom("test2");
+		newClient.setDateAjout(new Date());
+		newClient.setIdHotel(1);
+		newClient.setDateNaissance(new Date());
+		newClient.setMail("mail");
+		ServiceClient serviceClient = new ServiceClient();
+		serviceClient.create(newClient);
+		*/
 
 	}
 
