@@ -39,4 +39,7 @@ public class Client implements Serializable {
     @Column(name = "dateDelete")
     private Date dateDelete;
 
+    @Column(name = "id_hotel", nullable = false)
+    private Integer idHotel;
+
 }
