@@ -2,6 +2,7 @@ package hotel.hotel;
 import hotel.hotel.entities.*;
 import hotel.hotel.utils.Menu;
 
+import hotel.hotel.utils.Validation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 
 @SpringBootApplication
@@ -50,13 +52,42 @@ public class HotelApplication {
 
 		List<Chambre> toto = repo.findAll();
 
-		System.out.println("===> " + toto.stream().count());
+		System.out.println("===> " + toto.size());
 		System.out.println("hello");
+		//System.out.println("value ?");
+		//Scanner scanner = new Scanner(System.in);
+
+        /*
+		int valuei =  10; //scanner.nextInt();
+        System.out.println("-----------------ok");
+		Validation.checkInteger( (Integer) valuei, 11, "(int)");
+        System.out.println("-----------------egal ok");
+        Validation.checkInteger( (Integer) valuei, 10, "(int)");
+        System.out.println("-----------------pas ok");
+        Validation.checkInteger( (Integer) valuei, 5, "(int)");
+
+        String values = "abcde";
+        System.out.println("-----------------ok");
+        Validation.checkString( values, 6, "(string)");
+        System.out.println("-----------------ok egal");
+        Validation.checkString( values, 5, "(string)");
+        System.out.println("-----------------pas ok");
+        Validation.checkString( values, 2, "(string)");
+        */
+
+        System.out.println("-----------------pas ok données");
+        Validation.checkInteger( null, 6, "(Null integer)");
+		System.out.println("-----------------pas ok 0 données");
+		Validation.checkInteger( 0, 6, "(Null integer)");
+        System.out.println("-----------------pas ok données");
+        Validation.checkString( null, 2, "string null");
 
 	}
 
+    /**
+     * Method test rapide ( se lance avant le main )
+     */
 	private static ChambreRepository  chambreRepository;
-
 
 	//Validation
 	@Bean
