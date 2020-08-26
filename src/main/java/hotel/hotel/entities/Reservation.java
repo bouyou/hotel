@@ -24,23 +24,23 @@ public class Reservation implements Serializable {
     @Column(name = "nbPers", nullable = false)
     private Integer nbPers;
 
+    @Column(name = "prix", nullable = false)
+    private Float prix;
+
+    @Column(name = "nbCb", nullable = false)
+    private String nbCb;
+
     @Column(name = "dateArrivee", nullable = false)
     private Date dateArrivee;
 
     @Column(name = "dateReserv", nullable = false)
     private Date dateReserv;
 
-    @Column(name = "numeroCb", nullable = false)
-    private Integer numeroCb;
-
-    @Column(name = "dateModif", nullable = false)
+    @Column(name = "dateModif")
     private Date dateModif;
 
-    @Column(name = "dateDelete", nullable = false)
+    @Column(name = "dateDelete")
     private Date dateDelete;
-
-    @Column(name = "prix", nullable = false)
-    private Float prix;
 
     @Column(name = "id_chambre", nullable = false)
     private Integer idChambre;

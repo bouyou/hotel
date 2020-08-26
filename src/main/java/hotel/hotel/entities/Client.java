@@ -30,11 +30,11 @@ public class Client implements Serializable {
     @Column(name = "mail", nullable = false)
     private String mail;
 
-    @Column(name = "dateAjout")
+    @Column(name = "dateAjout", nullable = false)
     private Date dateAjout;
 
-    @Column(name = "dateModi")
-    private Date dateModi;
+    @Column(name = "dateModif")
+    private Date dateModif;
 
     @Column(name = "dateDelete")
     private Date dateDelete;
