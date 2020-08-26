@@ -92,7 +92,8 @@ public class HotelApplication {
      */
 	private static ChambreRepository  chambreRepository;
 
-	//Validation
+
+	/*
 	@Bean
 	public CommandLineRunner run(ChambreRepository chambreRepository) throws Exception {
 
@@ -108,6 +109,6 @@ public class HotelApplication {
 					Chambre a  = chambreRepository.save(c);
 				    chambreRepository.findAll().forEach(System.out::println);
 		};
-	}
+	}*/
 
 }
