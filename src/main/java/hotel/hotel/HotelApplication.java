@@ -5,6 +5,9 @@ import hotel.hotel.entities.ChambreRepository;
 import hotel.hotel.entities.Hotel;
 import hotel.hotel.service.ServiceHotel;
 import hotel.hotel.utils.Menu;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -17,6 +20,8 @@ import java.util.List;
 @SpringBootApplication
 public class HotelApplication {
 
+	private static Logger logger = LoggerFactory.getLogger("test");
+
 	public static void main(String[] args) {
 
 		//Dont touch !!!!!
@@ -24,10 +29,11 @@ public class HotelApplication {
 		SpringApplication.run(HotelApplication.class, args);
 		//Menu
 
+
 		Menu.showMainMenu();
 		//
 
-
+	   logger.info("teststststs");
 
 
 
@@ -52,9 +58,6 @@ public class HotelApplication {
 		ServiceHotel myServiceHotel = new ServiceHotel();
 		myServiceHotel.create(myHotel);
 		*/
-
-
-
 
 		List<Chambre> toto = repo.findAll();
 
