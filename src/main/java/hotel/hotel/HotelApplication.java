@@ -37,12 +37,15 @@ public class HotelApplication {
 		/*****Tests*****/
 
 
+		System.out.println("Salut les tarlouzes !!!");
+
+
 		//Example
 		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
 		ChambreRepository repo = context.getBean(ChambreRepository.class);
 		List<Chambre> toto = repo.findAll();
-		System.out.println("===> " + toto.size());
-		logger.info("teststststs");
+		System.out.println("=nombre de chambre==> " + toto.size());
+		//logger.info("teststststs");
 
 	    /*
 		Hotel myHotel = new Hotel()
@@ -77,13 +80,15 @@ public class HotelApplication {
         System.out.println("-----------------pas ok");
         Validation.checkString( values, 2, "(string)");
         */
-
+		/*
         System.out.println("-----------------pas ok données");
         Validation.checkInteger( null, 6, "(Null integer)");
 		System.out.println("-----------------pas ok 0 données");
 		Validation.checkInteger( 0, 6, "(Null integer)");
         System.out.println("-----------------pas ok données");
         Validation.checkString( null, 2, "string null");
+        */
+
 
 	}
 
