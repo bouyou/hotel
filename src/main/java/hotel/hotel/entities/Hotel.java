@@ -24,10 +24,10 @@ public class Hotel implements Serializable {
     @Column(name = "dateAjout", nullable = false)
     private Date dateAjout;
 
-    @Column(name = "dateModif", nullable = false)
+    @Column(name = "dateModif")
     private Date dateModif;
 
-    @Column(name = "dateDelete", nullable = false)
+    @Column(name = "dateDelete")
     private Date dateDelete;
 
 }
