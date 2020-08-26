@@ -30,4 +30,44 @@ public class Hotel implements Serializable {
     @Column(name = "dateDelete")
     private Date dateDelete;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getNbChambre() {
+        return nbChambre;
+    }
+
+    public void setNbChambre(Integer nbChambre) {
+        this.nbChambre = nbChambre;
+    }
+
+    public Date getDateAjout() {
+        return dateAjout;
+    }
+
+    public void setDateAjout(Date dateAjout) {
+        this.dateAjout = dateAjout;
+    }
+
+    public Date getDateModif() {
+        return dateModif;
+    }
+
+    public void setDateModif(Date dateModif) {
+        this.dateModif = dateModif;
+    }
+
+    public Date getDateDelete() {
+        return dateDelete;
+    }
+
+    public void setDateDelete(Date dateDelete) {
+        this.dateDelete = dateDelete;
+    }
+
 }

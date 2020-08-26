@@ -39,8 +39,8 @@ public class HotelApplication {
 		//Example
 
 
-		//ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
-		//ChambreRepository repo = context.getBean(ChambreRepository.class);
+		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
+		ChambreRepository repo = context.getBean(ChambreRepository.class);
 
 
 	   /*
@@ -56,9 +56,9 @@ public class HotelApplication {
 
 
 
-		//List<Chambre> toto = repo.findAll();
+		List<Chambre> toto = repo.findAll();
 
-		//System.out.println("===> " + toto.stream().count());
+		System.out.println("===> " + toto.stream().count());
 		System.out.println("hello");
 
 	}
