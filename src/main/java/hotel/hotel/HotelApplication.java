@@ -31,9 +31,7 @@ public class HotelApplication {
 
 
 		Menu.showMainMenu();
-		//
-
-	   logger.info("teststststs");
+	   //logger.info("teststststs");
 
 
 
