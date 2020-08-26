@@ -36,10 +36,6 @@ public class HotelApplication {
 
 		/*****Tests*****/
 
-
-
-
-
 		//Example
 		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
 		ChambreRepository repo = context.getBean(ChambreRepository.class);
