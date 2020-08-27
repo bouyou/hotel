@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ServiceChambre {
 
-    final ChambreRepository repo;
+    public ChambreRepository repo;
 
     /**
      * Construct
