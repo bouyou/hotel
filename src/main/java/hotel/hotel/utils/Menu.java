@@ -85,20 +85,6 @@ public class Menu<Static> {
         c.setMail(Validation.checkMail());
         System.out.println("Adresse mail : "  +  c.getMail());
 
-
-        //Mail
-        /*do{
-            System.out.println("Entrez l'adresse mail : ");
-            String value =  clavier.next();
-            response = Validation.checkString(value, 255);
-
-            if(response[0] == "false"){
-                System.out.println(Validation.formatResponse("Adresse mail", response));
-            }
-        }while(response[0] ==  "false");
-        c.setMail(response[3]);*/
-
-        //Date ajout
         c.setDateAjout(new java.util.Date());
         c.setIdHotel(1);
         c.setDateModif(new java.util.Date());
@@ -119,14 +105,26 @@ public class Menu<Static> {
         response[0] = "false";
 
         c.setNom(Validation.checkNom());
+        System.out.println("nom"  +  c.getNom());
 
-        System.out.println("Entrez le nouveau prenom : ");
+        c.setPrenom(Validation.checkPrenom());
+        System.out.println("prenom"  +  c.getPrenom());
+
+        c.setDateNaissance(Validation.checkDateNaissance());
+        System.out.println("Date de naissance (yyyy-mm-dd) : "  +  c.getDateNaissance());
+
+        c.setMail(Validation.checkMail());
+        System.out.println("Adresse mail : "  +  c.getMail());
+
+        c.setDateModif(new java.util.Date());
+
+        /*System.out.println("Entrez le nouveau prenom : ");
         c.setPrenom(clavier.next());
         System.out.println("Entrez la nouvelle date de naissance : ");
         c.setDateNaissance(Date.valueOf(clavier.next()));
         System.out.println("Entrez la nouvelle adresse mail : ");
-        c.setMail(clavier.next());
-        System.out.println("vous avez ajouter le client : " + c.getNom() + " " + c.getPrenom());
+        c.setMail(clavier.next());*/
+        System.out.println("vous avez modifie le client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
     }
