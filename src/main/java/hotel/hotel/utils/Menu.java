@@ -73,17 +73,9 @@ public class Menu<Static> {
         String[] response = new String[3];
         response[0] = "false";
 
-        //Nom
-        do{
-            System.out.println("Entrez le nom : ");
-            String value =  clavier.next();
-            response = Validation.checkString(value, 255);
+        c.setNom(Validation.checkNom());
 
-            if(response[0] == "false"){
-                System.out.println(Validation.formatResponse("Nom", response));
-            }
-        }while(response[0] ==  "false");
-        c.setNom(response[3]);
+        System.out.println("fdfdfdf"  +  c.getNom());
 
         //Prénom
         do{

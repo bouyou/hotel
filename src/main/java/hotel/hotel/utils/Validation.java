@@ -1,7 +1,12 @@
 package hotel.hotel.utils;
 
+import java.util.Scanner;
+import java.util.Scanner;
+
 public class Validation {
 
+
+    public static Scanner clavier = new Scanner(System.in);
     /**
      * checkString
      * @param s
@@ -45,12 +50,26 @@ public class Validation {
         return  response;
     }
 
+    /***
+     * Check if nom is valid
+     * @return
+     */
+    public static String checkNom(){
+        String[] response = new String[3];
+        response[0] = "false";
+        String value ="";
+        //Nom
+        do{
+            System.out.println("Entrez le nom : ");
+            value =  clavier.next();
+            response = Validation.checkString(value, 2);
 
-
-
-
-
-
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Nom", response));
+            }
+        }while(response[0] ==  "false");
+        return value;
+    }
 
     /**
      * String message formaté d'erreur de saisie
