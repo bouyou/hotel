@@ -1,7 +1,9 @@
 package hotel.hotel.utils;
 
 import java.util.Scanner;
-import java.util.Scanner;
+import java.sql.Date;
+
+import static java.util.Date.*;
 
 public class Validation {
 
@@ -37,7 +39,7 @@ public class Validation {
      * @param length
      * @return boolean
      */
-    public static String[] checkInteger (Integer i, Integer length){
+    public static String[]checkInteger (Integer i, Integer length){
         String[] response = new String[4];
         response[3] =  i.toString();
 
@@ -110,6 +112,66 @@ public class Validation {
 
             if(response[0] == "false"){
                 System.out.println(Validation.formatResponse("Nombre de chambres", response));
+            }
+        }while(response[0] ==  "false");
+        return value;
+    }
+
+    /**
+     * check prenom
+     * @return string
+     */
+    public static String checkPrenom() {
+        String[] response = new String[3];
+        response[0] = "false";
+        String value ="";
+        do{
+            System.out.println("Entrez le prenom : ");
+            value =  clavier.next();
+            response = Validation.checkString(value, 255);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Prenom", response));
+            }
+        }while(response[0] ==  "false");
+        return value;
+    }
+
+    /**
+     * check Date Naissance
+     * @return Date
+     */
+    public static Date checkDateNaissance() {
+        String[] response = new String[3];
+        response[0] = "false";
+        String value ="";
+        do{
+            System.out.println("Entrez la date de naissance : ");
+            value =  clavier.next();
+            response = Validation.checkString(value, 10);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Date de naissance", response));
+            }
+        }while(response[0] ==  "false");
+        return Date.valueOf(value);
+    }
+
+    /**
+     * Check mail
+     * @return string
+     */
+    public static String checkMail() {
+        String[] response = new String[3];
+        response[0] = "false";
+        String value ="";
+        do{
+            System.out.println("Entrez l'adresse mail : ");
+            value =  clavier.next();
+            response = Validation.checkString(value, 50);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Adresse mail", response));
             }
         }while(response[0] ==  "false");
         return value;

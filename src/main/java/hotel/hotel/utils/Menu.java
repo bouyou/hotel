@@ -76,35 +76,20 @@ public class Menu<Static> {
         response[0] = "false";
 
         c.setNom(Validation.checkNom());
+        System.out.println("nom"  +  c.getNom());
 
-        System.out.println("fdfdfdf"  +  c.getNom());
+        c.setPrenom(Validation.checkPrenom());
+        System.out.println("prenom"  +  c.getPrenom());
 
-        //Prénom
-        do{
-            System.out.println("Entrez le prenom : ");
-            String value =  clavier.next();
-            response = Validation.checkString(value, 255);
+        c.setDateNaissance(Validation.checkDateNaissance());
+        System.out.println("Date de naissance (yyyy-mm-dd) : "  +  c.getDateNaissance());
 
-            if(response[0] == "false"){
-                System.out.println(Validation.formatResponse("Prenom", response));
-            }
-        }while(response[0] ==  "false");
-        c.setPrenom(response[3]);
+        c.setMail(Validation.checkMail());
+        System.out.println("Adresse mail : "  +  c.getMail());
 
-        //Date de naissance
-        do{
-            System.out.println("Entrez la date de naissance : ");
-            String value =  clavier.next();
-            response = Validation.checkString(value, 255);
-
-            if(response[0] == "false"){
-                System.out.println(Validation.formatResponse("Date de naissance", response));
-            }
-        }while(response[0] ==  "false");
-        c.setDateNaissance(Date.valueOf(response[3]));
 
         //Mail
-        do{
+        /*do{
             System.out.println("Entrez l'adresse mail : ");
             String value =  clavier.next();
             response = Validation.checkString(value, 255);
@@ -113,7 +98,7 @@ public class Menu<Static> {
                 System.out.println(Validation.formatResponse("Adresse mail", response));
             }
         }while(response[0] ==  "false");
-        c.setMail(response[3]);
+        c.setMail(response[3]);*/
 
         //Date ajout
         c.setDateAjout(new java.util.Date());
@@ -134,18 +119,7 @@ public class Menu<Static> {
         String[] response = new String[3];
         response[0] = "false";
 
-
-        //Nouveau nom
-        do{
-            System.out.println("Entrez le nouveau nom : ");
-            String value =  clavier.next();
-            response = Validation.checkString(value, 255);
-
-            if(response[0] == "false"){
-                System.out.println(Validation.formatResponse("Nouveau Nom", response));
-            }
-        }while(response[0] ==  "false");
-        c.setNom(response[3]);
+        c.setNom(Validation.checkNom());
 
         System.out.println("Entrez le nouveau prenom : ");
         c.setPrenom(clavier.next());
