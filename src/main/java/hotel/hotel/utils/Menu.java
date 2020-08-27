@@ -1,5 +1,9 @@
 package hotel.hotel.utils;
 
+import hotel.hotel.entities.Client;
+
+import java.sql.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu<Static> {
@@ -64,16 +68,45 @@ public class Menu<Static> {
 
     private static void showAjoutClient() {
         System.out.println("je suis dans ajouter un Client");
+        Client c = new Client();
+        System.out.println("Entrez le nom : ");
+        c.setNom(clavier.next());
+        System.out.println("Entrez le prenom : ");
+        c.setPrenom(clavier.next());
+        System.out.println("Entrez la date de naissance : ");
+        c.setDateNaissance(Date.valueOf(clavier.next()));
+        System.out.println("Entrez l'adresse mail : ");
+        c.setMail(clavier.next());
+        System.out.println("Vous avez ajouter le client : " + c.getNom() + " " + c.getPrenom());
+        System.out.println("Date de naissance : " + c.getDateNaissance());
+        System.out.println("Adresse mail : " + c.getMail());
     }
     private static void showModifClient() {
         System.out.println("je suis dans modification d'un Client");
+        Client c = new Client();
+        System.out.println("Entrez le nouveau nom : ");
+        c.setNom(clavier.next());
+        System.out.println("Entrez le nouveau prenom : ");
+        c.setPrenom(clavier.next());
+        System.out.println("Entrez la nouvelle date de naissance : ");
+        c.setDateNaissance(Date.valueOf(clavier.next()));
+        System.out.println("Entrez la nouvelle adresse mail : ");
+        c.setMail(clavier.next());
+        System.out.println("vous avez ajouter le client : " + c.getNom() + " " + c.getPrenom());
+        System.out.println("Date de naissance : " + c.getDateNaissance());
+        System.out.println("Adresse mail : " + c.getMail());
     }
+
     private static void showSupprClient() {
         System.out.println("je suis dans supprimer un Client");
+        Client c = new Client();
+        System.out.println("Entrez le nom : ");
+        c.setNom(clavier.next());
+        System.out.println("Entrez le prenom : ");
+        c.setPrenom(clavier.next());
+        System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
     }
-    private static void showIdClient() {
-        System.out.println("je suis dans selectionner Id Client");
-    }
+
     private static void showGestionHotel() {
         System.out.println("je suis dans menu Gestion Hotel");
         do {
@@ -173,9 +206,11 @@ public class Menu<Static> {
     private static void showAjoutReservation() {
         System.out.println("je suis dans ajouter une Reservation");
     }
+
     private static void showModifReservation() {
         System.out.println("je suis dans modification d'une Reservation");
     }
+
     private static void showSupprReservation() {
         System.out.println("je suis dans supprimer une Reservation");
     }
