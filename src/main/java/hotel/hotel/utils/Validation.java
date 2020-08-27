@@ -1,51 +1,74 @@
 package hotel.hotel.utils;
 
-import org.springframework.data.util.Pair;
-
-import java.util.HashMap;
+import java.util.Scanner;
+import java.util.Scanner;
 
 public class Validation {
 
+
+    public static Scanner clavier = new Scanner(System.in);
     /**
      * checkString
      * @param s
      * @param length
-     * @return void system.out
+     * @return boolean
      */
-    public static void checkString (String s, int length, String label){
-        String[] response = new String[3];
+    public static String[] checkString (String s, int length){
+        String[] response = new String[4];
+
+        response[0] = "true";
+        response[3] = s;
 
         if(s == null  || s.isEmpty()){
-            response[0] = "Erreur de saisie !  ";
+            response[0] = "false";
             response[1] = "Veuillez entrer la donnée demandee";
 
         }else if( s.length() > length ) {
-            response[0] = "Erreur de saisie  ! ";
-            response[2] = "Veuillez taper moins de " + length + "caractères ";
+            response[0] = "false";
+            response[2] = "Veuillez taper moins de " + length + " caractères ";
         }
-        System.out.println(formatResponse(label, response));
+
+        return  response;
     }
 
     /**
      * Check Integer
      * @param i
      * @param length
-     * @return void system.out
+     * @return boolean
      */
-    public static void checkInteger (Integer i, Integer length, String label){
-        String[] response = new String[3];
+    public static String[]checkInteger (Integer i, Integer length){
+        String[] response = new String[4];
+        response[3] =  i.toString();
 
         if(i == null || i == 0){
-            response[0] = "Erreur de saisie !  ";
             response[1] = "Veuillez entrer la donnée demandee";
 
         }else if( i.compareTo(length) == 1  ) {
-            response[0] = "Erreur de saisie  ! ";
             response[2] = "Veuillez taper moins de " + length + " caractères ";
         }
-        if(response != null ){
-            System.out.println(formatResponse(label, response));
-        }
+        return  response;
+    }
+
+    /***
+     * Check if nom is valid
+     * @return
+     */
+    public static String checkNom(){
+        String[] response = new String[3];
+        response[0] = "false";
+        String value ="";
+        //Nom
+        do{
+            System.out.println("Entrez le nom : ");
+            value =  clavier.next();
+            response = Validation.checkString(value, 2);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Nom", response));
+            }
+        }while(response[0] ==  "false");
+        return value;
     }
 
     /**
@@ -54,7 +77,7 @@ public class Validation {
      * @param response
      * @return
      */
-    private static String formatResponse(String label, String[] response ){
+    public static String formatResponse(String label, String[] response ){
 
         /*
         System.out.println("0 -> " + response[0]);
@@ -66,11 +89,11 @@ public class Validation {
         System.out.println("2 -> " + m2);
         */
 
-        String m0 = response[0] != null  ?  response[0] : "";
+
         String m1 = response[1] != null  ?  response[1] : "";
         String m2 = response[2] != null  ?  response[2] : "";
 
-        return  response[0] != null  ?   m0 + m1 + m2 + " pour ce champs " + label : "";
+        return  m1 + m2 + " pour ce champs " + label;
     }
 
 }
