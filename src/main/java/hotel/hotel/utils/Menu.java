@@ -1,6 +1,7 @@
 package hotel.hotel.utils;
 
 import hotel.hotel.entities.Client;
+import hotel.hotel.service.ServiceClient;
 
 import java.sql.Date;
 import java.util.List;
@@ -84,10 +85,6 @@ public class Menu<Static> {
         }while(response[0] ==  "false");
         c.setNom(response[3]);
 
-
-
-
-
         //Prénom
         do{
             System.out.println("Entrez le prenom : ");
@@ -95,20 +92,49 @@ public class Menu<Static> {
             response = Validation.checkString(value, 255);
 
             if(response[0] == "false"){
-                System.out.println(Validation.formatResponse("Nom", response));
+                System.out.println(Validation.formatResponse("Prenom", response));
             }
         }while(response[0] ==  "false");
-        c.setNom(response[3]);
+        c.setPrenom(response[3]);
 
+        //Date de naissance
+        do{
+            System.out.println("Entrez la date de naissance : ");
+            String value =  clavier.next();
+            response = Validation.checkString(value, 255);
 
-        System.out.println("Entrez la date de naissance : ");
-        c.setDateNaissance(Date.valueOf(clavier.next()));
-        System.out.println("Entrez l'adresse mail : ");
-        c.setMail(clavier.next());
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Date de naissance", response));
+            }
+        }while(response[0] ==  "false");
+        c.setDateNaissance(Date.valueOf(response[3]));
+
+        //Mail
+        do{
+            System.out.println("Entrez l'adresse mail : ");
+            String value =  clavier.next();
+            response = Validation.checkString(value, 255);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Adresse mail", response));
+            }
+        }while(response[0] ==  "false");
+        c.setMail(response[3]);
+
+        //Date ajout
+        c.setDateAjout(new java.util.Date());
+        c.setIdHotel(1);
+        c.setDateModif(new java.util.Date());
+
+        ServiceClient serviceClient = new ServiceClient();
+        serviceClient.create(c);
+
         System.out.println("Vous avez ajouter le client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
     }
+
+
     private static void showModifClient() {
         System.out.println("je suis dans modification d'un Client");
         Client c = new Client();
