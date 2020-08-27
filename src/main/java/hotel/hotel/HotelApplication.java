@@ -11,13 +11,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
-
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.Scanner;
+
 
 
 @SpringBootApplication

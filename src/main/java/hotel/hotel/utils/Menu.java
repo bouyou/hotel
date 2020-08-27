@@ -1,11 +1,7 @@
 package hotel.hotel.utils;
-
 import hotel.hotel.entities.Client;
 import hotel.hotel.service.ServiceClient;
-
-import java.sql.Date;
 import java.text.ParseException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Menu<Static> {
