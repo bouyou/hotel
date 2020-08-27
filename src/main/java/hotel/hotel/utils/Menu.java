@@ -8,6 +8,7 @@ import hotel.hotel.service.ServiceClient;
 import hotel.hotel.service.ServiceHotel;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class Menu<Static> {
     public static Scanner clavier = new Scanner(System.in);
     public static Integer choix;
 
-    public static void showMainMenu(){
+    public static void showMainMenu() throws ParseException {
         System.out.println("---- BIENVENUE ----");
         System.out.println("Menu Principal : ");
 
@@ -47,6 +48,7 @@ public class Menu<Static> {
 
     //--------------------------menu client---------------------------------------
     private static void showGestionClient() {
+    private static void showGestionClient() throws ParseException {
         System.out.println("je suis dans menu Gestion Client");
         do {
             System.out.println("1 : Ajouter un Client");
@@ -72,7 +74,7 @@ public class Menu<Static> {
         while(choix!=0);
     }
 
-    private static void showAjoutClient() {
+    private static void showAjoutClient()
         System.out.println("je suis dans ajouter un Client");
         Client c = new Client();
         String[] response = new String[3];
@@ -90,20 +92,6 @@ public class Menu<Static> {
         c.setMail(Validation.checkMail());
         System.out.println("Adresse mail : "  +  c.getMail());
 
-
-        //Mail
-        /*do{
-            System.out.println("Entrez l'adresse mail : ");
-            String value =  clavier.next();
-            response = Validation.checkString(value, 255);
-
-            if(response[0] == "false"){
-                System.out.println(Validation.formatResponse("Adresse mail", response));
-            }
-        }while(response[0] ==  "false");
-        c.setMail(response[3]);*/
-
-        //Date ajout
         c.setDateAjout(new java.util.Date());
         c.setIdHotel(1);
         c.setDateModif(new java.util.Date());
@@ -116,35 +104,51 @@ public class Menu<Static> {
         System.out.println("Adresse mail : " + c.getMail());
     }
 
+
+    private static void showModifClient() throws ParseException {
     private static void showModifClient() {
         System.out.println("je suis dans modification d'un Client");
-        Client c = new Client();
-        String[] response = new String[3];
-        response[0] = "false";
+        ServiceClient serviceClient = new ServiceClient();
+        Client c = serviceClient.chooseClientById(3);
 
         c.setNom(Validation.checkNom());
+        System.out.println("nom"  +  c.getNom());
 
-        System.out.println("Entrez le nouveau prenom : ");
-        c.setPrenom(clavier.next());
-        System.out.println("Entrez la nouvelle date de naissance : ");
-        c.setDateNaissance(Date.valueOf(clavier.next()));
-        System.out.println("Entrez la nouvelle adresse mail : ");
-        c.setMail(clavier.next());
-        System.out.println("vous avez ajouter le client : " + c.getNom() + " " + c.getPrenom());
+        c.setPrenom(Validation.checkPrenom());
+        System.out.println("prenom"  +  c.getPrenom());
+
+        c.setDateNaissance(Validation.checkDateNaissance());
+        System.out.println("Date de naissance (yyyy-mm-dd) : "  +  c.getDateNaissance());
+
+        c.setMail(Validation.checkMail());
+        System.out.println("Adresse mail : "  +  c.getMail());
+
+        c.setDateModif(new java.util.Date());
+        serviceClient.modif(c);
+
+
+        System.out.println("vous avez modifie le client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
     }
 
     private static void showSupprClient() {
         System.out.println("je suis dans supprimer un Client");
-        Client c = new Client();
-        System.out.println("Entrez le nom : ");
-        c.setNom(clavier.next());
-        System.out.println("Entrez le prenom : ");
-        c.setPrenom(clavier.next());
+        ServiceClient serviceClient = new ServiceClient();
+        Client c = serviceClient.chooseClientById(3);
+
+
+        c.setNom(Validation.checkNom());
+        System.out.println("nom"  +  c.getNom());
+        c.setPrenom(Validation.checkPrenom());
+        System.out.println("prenom"  +  c.getPrenom());
+        c.setDateDelete(new java.util.Date());
+        serviceClient.delete(c);
+
         System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
     }
 
+    private static void showGestionHotel() throws ParseException {
     //-------------------------menu hotel----------------------------------------------------
     private static void showGestionHotel() {
         System.out.println("je suis dans menu Gestion Hotel");
@@ -245,6 +249,7 @@ public class Menu<Static> {
         System.out.println("cet hotel a été supprimé");
     }
 
+    private static void showGestionChambre() throws ParseException {
     //-------------------------menu chambre -------------------------------------------------
     private static void showGestionChambre() {
         System.out.println("je suis dans menu Gestion Chambre");
@@ -357,6 +362,7 @@ public class Menu<Static> {
         //récupérer chambre choisi
         Chambre chbToDelete = serviceChambre.chooseRoomById(id);
 
+    private static void showGestionReservation() throws ParseException {
         //supprimer cette chambre
         serviceChambre.delete(chbToDelete);
         System.out.println("cette chambre a été supprimé");

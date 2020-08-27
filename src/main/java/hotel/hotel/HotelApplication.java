@@ -11,9 +11,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 
@@ -22,7 +25,7 @@ public class HotelApplication {
 
 	private static Logger logger = LoggerFactory.getLogger("HotelApplication");
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 
 		/******Dont touch !!!!!****/
 		System.setProperty("spring.devtools.restart.enabled", "false");
@@ -39,10 +42,10 @@ public class HotelApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
 		ChambreRepository repo = context.getBean(ChambreRepository.class);
 		List<Chambre> toto = repo.findAll();
-		System.out.println("Salut les tarlouzes !!!");
+		System.out.println("Salut les barbouzes !!!");
 		System.out.println("=nombre de chambre==> " + toto.size());
 
-		logger.info("Allez on se bouge le cul !! ");
+		logger.info("Allez on se bouge  !! ");
 		logger.debug("debugtest:");
 		logger.error("error test:");
 	    /*
@@ -90,29 +93,47 @@ public class HotelApplication {
 
 	}
 
+
+
+
     /**
      * Method test rapide ( se lance avant le main )
      */
 	private static ChambreRepository  chambreRepository;
 
 
-	/*
 	@Bean
-	public CommandLineRunner run(ChambreRepository chambreRepository) throws Exception {
+	public CommandLineRunner run(ChambreRepository chambreRepository, ClientRepository clientRepository) throws Exception {
 
 		return (String[] args) -> {
 
+			Optional<Client> a  = clientRepository.findById(3);
+			System.out.println("-----------------" + a.get().getNom());
+
+
+			//Chambre a  = chambreRepository.getOne(20);
+			//System.out.println("-----------------" + a.getNumero());
+			//a.setNbPax(10);
+			//chambreRepository.save(a);
+
+			/*
 			Chambre c = new Chambre();
 					c.setNbPax(1);
 					c.setDateAjout(new Date());
-					c.setDateModif(new Date());
+					c.setDateModif(new Date());0
+
 					c.setIdHotel(1);
 					c.setNumero("1245");
 
 					Chambre a  = chambreRepository.save(c);
-				    chambreRepository.findAll().forEach(System.out::println);
+
+				*/
+			chambreRepository.findAll().forEach(System.out::println);
+			clientRepository.findAll().forEach(System.out::println);
+
 		};
-	}*/
+
+	}
 
 
 }

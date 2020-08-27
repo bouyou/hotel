@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ServiceReservation {
 
-    final ReservationRepository repo;
+    public  ReservationRepository repo;
 
     /**
      * Construct

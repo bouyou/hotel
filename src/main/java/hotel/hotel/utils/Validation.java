@@ -1,9 +1,12 @@
 package hotel.hotel.utils;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import java.util.Scanner;
-import java.sql.Date;
+import java.util.Date;
 
-import static java.util.Date.*;
+
 
 public class Validation {
 
@@ -67,7 +70,7 @@ public class Validation {
         do{
             System.out.println("Entrez le nom : ");
             value =  clavier.next();
-            response = Validation.checkString(value, 2);
+            response = Validation.checkString(value, 255);
 
             if(response[0] == "false"){
                 System.out.println(Validation.formatResponse("Nom", response));
@@ -139,12 +142,12 @@ public class Validation {
      * check Date Naissance
      * @return Date
      */
-    public static Date checkDateNaissance() {
+    public static Date checkDateNaissance() throws ParseException {
         String[] response = new String[3];
         response[0] = "false";
         String value ="";
         do{
-            System.out.println("Entrez la date de naissance : ");
+            System.out.println("Entrez la date de naissance (dd-mm-yyyy) : ");
             value =  clavier.next();
             response = Validation.checkString(value, 10);
 
@@ -152,7 +155,8 @@ public class Validation {
                 System.out.println(Validation.formatResponse("Date de naissance", response));
             }
         }while(response[0] ==  "false");
-        return Date.valueOf(value);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy", Locale.ENGLISH);
+        return formatter.parse(value);
     }
 
     /**

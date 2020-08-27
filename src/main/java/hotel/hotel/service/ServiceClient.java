@@ -2,6 +2,7 @@ package hotel.hotel.service;
 
 import hotel.hotel.HotelApplication;
 import hotel.hotel.entities.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -12,13 +13,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.Optional;
 
 public class ServiceClient {
 
-    final ClientRepository clientRepository;
+    public ClientRepository clientRepository;
     final ReservationRepository reservationRepository;
 
     /**
@@ -68,7 +67,7 @@ public class ServiceClient {
      */
     public Client chooseClientById(int id){
 
-        return this.clientRepository.getOne(id);
+        return this.clientRepository.findById(id).get();
     }
 
     /**
