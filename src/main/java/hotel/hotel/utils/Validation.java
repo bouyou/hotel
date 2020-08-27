@@ -8,7 +8,6 @@ import java.util.Date;
 
 public class Validation {
 
-
     public static Scanner clavier = new Scanner(System.in);
     /**
      * checkString
@@ -30,7 +29,6 @@ public class Validation {
             response[0] = "false";
             response[2] = "Veuillez taper moins de " + length + " caractères ";
         }
-
         return  response;
     }
 

@@ -73,23 +73,17 @@ public class Menu<Static> {
         Client c = new Client();
         String[] response = new String[3];
         response[0] = "false";
-
         c.setNom(Validation.checkNom());
         System.out.println("nom"  +  c.getNom());
-
         c.setPrenom(Validation.checkPrenom());
         System.out.println("prenom"  +  c.getPrenom());
-
         c.setDateNaissance(Validation.checkDateNaissance());
         System.out.println("Date de naissance (yyyy-mm-dd) : "  +  c.getDateNaissance());
-
         c.setMail(Validation.checkMail());
         System.out.println("Adresse mail : "  +  c.getMail());
-
         c.setDateAjout(new java.util.Date());
         c.setIdHotel(1);
         c.setDateModif(new java.util.Date());
-
         ServiceClient serviceClient = new ServiceClient();
         serviceClient.create(c);
 
@@ -103,23 +97,16 @@ public class Menu<Static> {
         System.out.println("je suis dans modification d'un Client");
         ServiceClient serviceClient = new ServiceClient();
         Client c = serviceClient.chooseClientById(3);
-
         c.setNom(Validation.checkNom());
         System.out.println("nom"  +  c.getNom());
-
         c.setPrenom(Validation.checkPrenom());
         System.out.println("prenom"  +  c.getPrenom());
-
         c.setDateNaissance(Validation.checkDateNaissance());
         System.out.println("Date de naissance (yyyy-mm-dd) : "  +  c.getDateNaissance());
-
         c.setMail(Validation.checkMail());
         System.out.println("Adresse mail : "  +  c.getMail());
-
         c.setDateModif(new java.util.Date());
         serviceClient.modif(c);
-
-
         System.out.println("vous avez modifie le client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
@@ -129,15 +116,12 @@ public class Menu<Static> {
         System.out.println("je suis dans supprimer un Client");
         ServiceClient serviceClient = new ServiceClient();
         Client c = serviceClient.chooseClientById(3);
-
-
         c.setNom(Validation.checkNom());
         System.out.println("nom"  +  c.getNom());
         c.setPrenom(Validation.checkPrenom());
         System.out.println("prenom"  +  c.getPrenom());
         c.setDateDelete(new java.util.Date());
         serviceClient.delete(c);
-
         System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
     }
 
