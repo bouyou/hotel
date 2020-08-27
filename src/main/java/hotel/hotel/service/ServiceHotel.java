@@ -7,16 +7,16 @@ import org.springframework.context.ConfigurableApplicationContext;
 import java.util.Date;
 import java.util.List;
 
-public class ServiceHotel {
+public class ServiceHotel  {
 
-    final HotelRepository repo;
+    public HotelRepository repo;
     final ChambreRepository repochambre;
 
     /**
      * Construct
-     * @param repochambre
+     * @param
      */
-    public ServiceHotel(ChambreRepository repochambre){
+    public ServiceHotel(){
 
         String args = "";
         ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);

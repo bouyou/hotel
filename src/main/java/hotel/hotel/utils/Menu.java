@@ -3,6 +3,7 @@ package hotel.hotel.utils;
 import hotel.hotel.entities.Client;
 import hotel.hotel.entities.Hotel;
 import hotel.hotel.service.ServiceClient;
+import hotel.hotel.service.ServiceHotel;
 
 import java.sql.Date;
 import java.util.List;
@@ -177,14 +178,41 @@ public class Menu<Static> {
         System.out.println("Nombre de chambre enregisté"  +  h.getNbChambre());
 
         h.setDateAjout(new java.util.Date());
+
+        ServiceHotel serviceHotel = new ServiceHotel();
+        serviceHotel.create(h);
     }
 
     private static void showModifHotel() {
         System.out.println("je suis dans modification d'un Hotel");
+
+        ServiceHotel servicehotel = new ServiceHotel();
+        System.out.println(servicehotel.repo.findAll());
+        System.out.println("Choisir l'id de l'hotel à modifier");
+        Scanner scanner = new Scanner(System.in);
+        int id = scanner.nextInt();
+        Hotel hotel = servicehotel.chooseHotelById(id);
+        System.out.println("cet hotel a "+hotel.getNbChambre()+" chambres");
+        System.out.println("quel est le nouveau nombre de chambre?");
+        int nb = scanner.nextInt();
+        hotel.setNbChambre(Validation.checkNbChambre());
+        ServiceHotel serviceHotel = new ServiceHotel();
+        serviceHotel.modif(hotel);
+
     }
 
     private static void showSupprHotel() {
+
         System.out.println("je suis dans supprimer un Hotel");
+
+        ServiceHotel servicehotel = new ServiceHotel();
+        System.out.println(servicehotel.repo.findAll());
+        System.out.println("Choisir l'id de l'hotel à supprimer");
+        Scanner scanner = new Scanner(System.in);
+        int id = scanner.nextInt();
+        Hotel hotelToDelete= servicehotel.chooseHotelById(id);
+        servicehotel.delete(hotelToDelete);
+        System.out.println("cet hotel a été supprimé");
     }
 
     //-------------------------menu chambre -------------------------------------------------

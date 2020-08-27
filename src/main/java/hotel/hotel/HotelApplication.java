@@ -28,7 +28,7 @@ public class HotelApplication {
 		System.setProperty("spring.devtools.restart.enabled", "false");
 		SpringApplication.run(HotelApplication.class, args);
 		//Menu
-		//Menu.showMainMenu();
+		Menu.showMainMenu();
 		/******* Fin dont touch *****/
 
 
