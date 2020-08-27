@@ -12,13 +12,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+import java.util.Optional;
 
 public class ServiceClient {
 
-    final ClientRepository clientRepository;
+    public ClientRepository clientRepository;
     final ReservationRepository reservationRepository;
 
     /**
@@ -67,7 +65,7 @@ public class ServiceClient {
      * @return "Client" le client choisi
      */
     public Client chooseClientById(int id){
-        return this.clientRepository.getOne(id);
+        return this.clientRepository.findById(id).get();
     }
 
     /**
@@ -89,7 +87,6 @@ public class ServiceClient {
         return nbReservation>0;
 
     }
-
 
 
 }

@@ -4,6 +4,7 @@ import hotel.hotel.entities.Client;
 import hotel.hotel.service.ServiceClient;
 
 import java.sql.Date;
+import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -11,7 +12,7 @@ public class Menu<Static> {
     public static Scanner clavier = new Scanner(System.in);
     public static Integer choix;
 
-    public static void showMainMenu(){
+    public static void showMainMenu() throws ParseException {
         System.out.println("---- BIENVENUE ----");
         System.out.println("Menu Principal : ");
 
@@ -41,7 +42,7 @@ public class Menu<Static> {
         while(choix!=0);
     }
 
-    private static void showGestionClient() {
+    private static void showGestionClient() throws ParseException {
         System.out.println("je suis dans menu Gestion Client");
         do {
             System.out.println("1 : Ajouter un Client");
@@ -67,7 +68,7 @@ public class Menu<Static> {
         while(choix!=0);
     }
 
-    private static void showAjoutClient() {
+    private static void showAjoutClient() throws ParseException {
         System.out.println("je suis dans ajouter un Client");
         Client c = new Client();
         String[] response = new String[3];
@@ -98,11 +99,10 @@ public class Menu<Static> {
     }
 
 
-    private static void showModifClient() {
+    private static void showModifClient() throws ParseException {
         System.out.println("je suis dans modification d'un Client");
-        Client c = new Client();
-        String[] response = new String[3];
-        response[0] = "false";
+        ServiceClient serviceClient = new ServiceClient();
+        Client c = serviceClient.chooseClientById(3);
 
         c.setNom(Validation.checkNom());
         System.out.println("nom"  +  c.getNom());
@@ -117,13 +117,9 @@ public class Menu<Static> {
         System.out.println("Adresse mail : "  +  c.getMail());
 
         c.setDateModif(new java.util.Date());
+        serviceClient.modif(c);
 
-        /*System.out.println("Entrez le nouveau prenom : ");
-        c.setPrenom(clavier.next());
-        System.out.println("Entrez la nouvelle date de naissance : ");
-        c.setDateNaissance(Date.valueOf(clavier.next()));
-        System.out.println("Entrez la nouvelle adresse mail : ");
-        c.setMail(clavier.next());*/
+
         System.out.println("vous avez modifie le client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
@@ -131,15 +127,21 @@ public class Menu<Static> {
 
     private static void showSupprClient() {
         System.out.println("je suis dans supprimer un Client");
-        Client c = new Client();
-        System.out.println("Entrez le nom : ");
-        c.setNom(clavier.next());
-        System.out.println("Entrez le prenom : ");
-        c.setPrenom(clavier.next());
+        ServiceClient serviceClient = new ServiceClient();
+        Client c = serviceClient.chooseClientById(3);
+
+
+        c.setNom(Validation.checkNom());
+        System.out.println("nom"  +  c.getNom());
+        c.setPrenom(Validation.checkPrenom());
+        System.out.println("prenom"  +  c.getPrenom());
+        c.setDateDelete(new java.util.Date());
+        serviceClient.delete(c);
+
         System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
     }
 
-    private static void showGestionHotel() {
+    private static void showGestionHotel() throws ParseException {
         System.out.println("je suis dans menu Gestion Hotel");
         do {
             System.out.println("1 : Ajouter un Hotel");
@@ -175,7 +177,7 @@ public class Menu<Static> {
         System.out.println("je suis dans supprimer un Client");
     }
 
-    private static void showGestionChambre() {
+    private static void showGestionChambre() throws ParseException {
         System.out.println("je suis dans menu Gestion Chambre");
         do {
             System.out.println("1 : Ajouter une Chambre");
@@ -210,7 +212,7 @@ public class Menu<Static> {
         System.out.println("je suis dans supprimer une Chambre");
     }
 
-    private static void showGestionReservation() {
+    private static void showGestionReservation() throws ParseException {
         System.out.println("je suis dans menu Gestion Reservation");
         do {
             System.out.println("1 : Ajouter une Reservation");
