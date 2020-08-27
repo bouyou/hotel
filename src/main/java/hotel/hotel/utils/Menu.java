@@ -272,9 +272,12 @@ public class Menu<Static> {
         while(choix!=0);
     }
 
+    /**
+     * ajouter une chambre a la bdd
+     */
     private static void showAjoutChambre() {
         System.out.println("je suis dans ajouter une Chambre");
-
+        boolean canContinue = true;
         Chambre c = new Chambre();
 
         System.out.println("Choisissez a quel hotel cette chambre appartiendra : ");
@@ -286,24 +289,52 @@ public class Menu<Static> {
         }
         System.out.println("Cette chambre appartiendra à l'hotel numero:");
         int idHotel =  clavier.nextInt();
-
-        //verifier que l'hotel n'es pas plein
-
-        System.out.println("Combien de personnes pourra accuillir cette chambre 1,2 ou 3?");
-        int nbPax =  clavier.nextInt();
-        //vérifier que c bien 1 2 ou 3
-
-        System.out.println("Quel sera le numero de cette chambre?");
-        String num =  clavier.next();
-        //vérifier que ce numero n'est pas deja pris
-
+        Hotel hotel = servicehotel.chooseHotelById(idHotel);
+        servicehotel.hotelHasChambres(idHotel);
         ServiceChambre serviceChambre = new ServiceChambre();
-        Chambre newChambre = new Chambre();
-        newChambre.setNumero(num);
-        newChambre.setNbPax(nbPax);
-        newChambre.setIdHotel(idHotel);
-        //creation de la chambre dans la bdd
-        serviceChambre.create(newChambre);
+        List<Chambre> allRooms = serviceChambre.repo.getRoomByIdHotel(idHotel);
+        if(allRooms.size() == hotel.getNbChambre()){//si le nombre de chambre que contien l'hotel est egal au nombre maxi
+            System.out.println("Cet hotel a atteind son nombre maximum de chambres");
+            canContinue=false;
+        }
+
+        if(canContinue){
+            System.out.println("Combien de personnes pourra accueillir cette chambre 1,2 ou 3?");
+            int nbPax =  clavier.nextInt();
+            if (nbPax>3 | nbPax<0){
+                canContinue=false;
+            }
+
+
+            if (canContinue){
+
+                boolean again = true;
+                String num;
+                do{
+                    System.out.println("Quel sera le numero de cette chambre?");
+                    num =  clavier.next();
+
+                    for (Chambre ch : allRooms ) {
+                        if(ch.getNumero() == num){
+                            System.out.println("le numero de chambre est deja pris");
+                            again = false;
+                        }
+                    }
+                }while(!again);
+
+
+                Chambre newChambre = new Chambre();
+                newChambre.setNumero(num);
+                newChambre.setNbPax(nbPax);
+                newChambre.setIdHotel(idHotel);
+                newChambre.setDateAjout(new java.util.Date());
+                //creation de la chambre dans la bdd
+                serviceChambre.create(newChambre);
+            }
+
+        }
+
+
     }
 
     private static void showModifChambre() {
@@ -312,6 +343,23 @@ public class Menu<Static> {
 
     private static void showSupprChambre() {
         System.out.println("je suis dans supprimer une Chambre");
+
+        //affiche liste des chambres
+        ServiceChambre serviceChambre = new ServiceChambre();
+        List<Chambre> allChambres = serviceChambre.repo.findAll();
+        for (Chambre c : allChambres) {
+            System.out.println("chambre id:"+c.getId()+" nb de chambres:"+c.getNumero());
+        }
+        //choisir la chambre a supprimer
+        System.out.println("Choisir l'id de la chmabre à supprimer");
+        Scanner scanner = new Scanner(System.in);
+        int id = scanner.nextInt();
+        //récupérer chambre choisi
+        Chambre chbToDelete = serviceChambre.chooseRoomById(id);
+
+        //supprimer cette chambre
+        serviceChambre.delete(chbToDelete);
+        System.out.println("cette chambre a été supprimé");
     }
 
     //----------------------------menu reservation---------------------------------------

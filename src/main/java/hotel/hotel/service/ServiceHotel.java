@@ -61,7 +61,7 @@ public class ServiceHotel  {
      * @return "Hotel"
      */
     public Hotel chooseHotelById(int id){
-        return this.repo.getOne(id);
+        return this.repo.findById(id).get();
     }
 
     /**
@@ -83,4 +83,6 @@ public class ServiceHotel  {
         return nbRooms.size()>0;
 
     }
+
+
 }

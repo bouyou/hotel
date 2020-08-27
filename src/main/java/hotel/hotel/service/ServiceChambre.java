@@ -10,7 +10,7 @@ import java.util.List;
 
 public class ServiceChambre {
 
-    final ChambreRepository repo;
+    public ChambreRepository repo;
 
     /**
      * Construct
@@ -27,7 +27,6 @@ public class ServiceChambre {
      * @param chambre
      */
     public void create(Chambre chambre){
-
         this.repo.save(chambre);
     }
 
@@ -46,7 +45,7 @@ public class ServiceChambre {
      * @return un objet chambre
      */
     public Chambre chooseRoomById(int id){
-        return this.repo.getOne(id);
+        return this.repo.findById(id).get();
     }
 
     /**
