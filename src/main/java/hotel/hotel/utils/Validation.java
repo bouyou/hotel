@@ -42,6 +42,7 @@ public class Validation {
      */
     public static String[]checkInteger (Integer i, Integer length){
         String[] response = new String[4];
+        response[0] = "true";
         response[3] =  i.toString();
 
         if(i == null || i == 0){
