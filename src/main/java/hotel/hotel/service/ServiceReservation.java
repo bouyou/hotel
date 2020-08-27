@@ -1,10 +1,7 @@
 package hotel.hotel.service;
 
 import hotel.hotel.HotelApplication;
-import hotel.hotel.entities.Hotel;
-import hotel.hotel.entities.HotelRepository;
-import hotel.hotel.entities.Reservation;
-import hotel.hotel.entities.ReservationRepository;
+import hotel.hotel.entities.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -34,7 +31,9 @@ public class ServiceReservation {
 
         this.repo.delete(reservation);
     }
-
+    public Reservation chooseReservationById(int id){
+        return this.repo.getOne(id);
+    }
     public void modif(Reservation reservation) {
 
         this.repo.save(reservation);
