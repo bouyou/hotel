@@ -47,7 +47,7 @@ public class Menu<Static> {
     }
 
     //--------------------------menu client---------------------------------------
-    private static void showGestionClient() {
+
     private static void showGestionClient() throws ParseException {
         System.out.println("je suis dans menu Gestion Client");
         do {
@@ -74,7 +74,7 @@ public class Menu<Static> {
         while(choix!=0);
     }
 
-    private static void showAjoutClient()
+    private static void showAjoutClient() throws ParseException {
         System.out.println("je suis dans ajouter un Client");
         Client c = new Client();
         String[] response = new String[3];
@@ -106,7 +106,7 @@ public class Menu<Static> {
 
 
     private static void showModifClient() throws ParseException {
-    private static void showModifClient() {
+
         System.out.println("je suis dans modification d'un Client");
         ServiceClient serviceClient = new ServiceClient();
         Client c = serviceClient.chooseClientById(3);
@@ -148,9 +148,9 @@ public class Menu<Static> {
         System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
     }
 
-    private static void showGestionHotel() throws ParseException {
+
     //-------------------------menu hotel----------------------------------------------------
-    private static void showGestionHotel() {
+        private static void showGestionHotel() throws ParseException {
         System.out.println("je suis dans menu Gestion Hotel");
         do {
             System.out.println("1 : Ajouter un Hotel");
@@ -249,9 +249,9 @@ public class Menu<Static> {
         System.out.println("cet hotel a été supprimé");
     }
 
-    private static void showGestionChambre() throws ParseException {
+
     //-------------------------menu chambre -------------------------------------------------
-    private static void showGestionChambre() {
+    private static void showGestionChambre() throws ParseException {
         System.out.println("je suis dans menu Gestion Chambre");
         do {
             System.out.println("1 : Ajouter une Chambre");
@@ -362,14 +362,14 @@ public class Menu<Static> {
         //récupérer chambre choisi
         Chambre chbToDelete = serviceChambre.chooseRoomById(id);
 
-    private static void showGestionReservation() throws ParseException {
+
         //supprimer cette chambre
         serviceChambre.delete(chbToDelete);
         System.out.println("cette chambre a été supprimé");
     }
 
     //----------------------------menu reservation---------------------------------------
-    private static void showGestionReservation() {
+    private static void showGestionReservation() throws ParseException{
         System.out.println("je suis dans menu Gestion Reservation");
         do {
             System.out.println("1 : Ajouter une Reservation");
