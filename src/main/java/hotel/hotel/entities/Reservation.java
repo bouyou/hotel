@@ -135,4 +135,6 @@ public class Reservation implements Serializable {
     public void setIdClient(Integer idClient) {
         this.idClient = idClient;
     }
+
+
 }
