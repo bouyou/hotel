@@ -138,8 +138,22 @@ public class Menu<Static> {
     private static void showModifClient() {
         System.out.println("je suis dans modification d'un Client");
         Client c = new Client();
-        System.out.println("Entrez le nouveau nom : ");
-        c.setNom(clavier.next());
+        String[] response = new String[3];
+        response[0] = "false";
+
+
+        //Nouveau nom
+        do{
+            System.out.println("Entrez le nouveau nom : ");
+            String value =  clavier.next();
+            response = Validation.checkString(value, 255);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Nouveau Nom", response));
+            }
+        }while(response[0] ==  "false");
+        c.setNom(response[3]);
+
         System.out.println("Entrez le nouveau prenom : ");
         c.setPrenom(clavier.next());
         System.out.println("Entrez la nouvelle date de naissance : ");
