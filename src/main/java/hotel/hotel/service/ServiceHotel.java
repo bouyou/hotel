@@ -25,7 +25,6 @@ public class ServiceHotel  {
     }
 
 
-
     /**
      * "create" save the hotel in the bdd
      * @param hotel

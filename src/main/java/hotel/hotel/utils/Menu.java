@@ -1,7 +1,9 @@
 package hotel.hotel.utils;
 
+import hotel.hotel.entities.Chambre;
 import hotel.hotel.entities.Client;
 import hotel.hotel.entities.Hotel;
+import hotel.hotel.service.ServiceChambre;
 import hotel.hotel.service.ServiceClient;
 import hotel.hotel.service.ServiceHotel;
 
@@ -272,6 +274,36 @@ public class Menu<Static> {
 
     private static void showAjoutChambre() {
         System.out.println("je suis dans ajouter une Chambre");
+
+        Chambre c = new Chambre();
+
+        System.out.println("Choisissez a quel hotel cette chambre appartiendra : ");
+        //affiche la liste des hotels
+        ServiceHotel servicehotel = new ServiceHotel();
+        List<Hotel> allHotels = servicehotel.repo.findAll();
+        for (Hotel h : allHotels) {
+            System.out.println("hotel numero:"+h.getId()+" nb de chambres:"+h.getNbChambre());
+        }
+        System.out.println("Cette chambre appartiendra à l'hotel numero:");
+        int idHotel =  clavier.nextInt();
+
+        //verifier que l'hotel n'es pas plein
+
+        System.out.println("Combien de personnes pourra accuillir cette chambre 1,2 ou 3?");
+        int nbPax =  clavier.nextInt();
+        //vérifier que c bien 1 2 ou 3
+
+        System.out.println("Quel sera le numero de cette chambre?");
+        String num =  clavier.next();
+        //vérifier que ce numero n'est pas deja pris
+
+        ServiceChambre serviceChambre = new ServiceChambre();
+        Chambre newChambre = new Chambre();
+        newChambre.setNumero(num);
+        newChambre.setNbPax(nbPax);
+        newChambre.setIdHotel(idHotel);
+        //creation de la chambre dans la bdd
+        serviceChambre.create(newChambre);
     }
 
     private static void showModifChambre() {

@@ -67,6 +67,7 @@ public class ServiceClient {
      * @return "Client" le client choisi
      */
     public Client chooseClientById(int id){
+
         return this.clientRepository.getOne(id);
     }
 
