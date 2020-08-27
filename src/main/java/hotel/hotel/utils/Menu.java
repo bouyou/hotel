@@ -69,10 +69,38 @@ public class Menu<Static> {
     private static void showAjoutClient() {
         System.out.println("je suis dans ajouter un Client");
         Client c = new Client();
-        System.out.println("Entrez le nom : ");
-        c.setNom(clavier.next());
-        System.out.println("Entrez le prenom : ");
-        c.setPrenom(clavier.next());
+        String[] response = new String[3];
+        response[0] = "false";
+
+        //Nom
+        do{
+            System.out.println("Entrez le nom : ");
+            String value =  clavier.next();
+            response = Validation.checkString(value, 255);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Nom", response));
+            }
+        }while(response[0] ==  "false");
+        c.setNom(response[3]);
+
+
+
+
+
+        //Prénom
+        do{
+            System.out.println("Entrez le prenom : ");
+            String value =  clavier.next();
+            response = Validation.checkString(value, 255);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Nom", response));
+            }
+        }while(response[0] ==  "false");
+        c.setNom(response[3]);
+
+
         System.out.println("Entrez la date de naissance : ");
         c.setDateNaissance(Date.valueOf(clavier.next()));
         System.out.println("Entrez l'adresse mail : ");

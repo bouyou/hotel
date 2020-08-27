@@ -62,7 +62,7 @@ public class HotelApplication {
 		//System.out.println("value ?");
 		//Scanner scanner = new Scanner(System.in);
 
-        /*
+		/*
 		int valuei =  10; //scanner.nextInt();
         System.out.println("-----------------ok");
 		Validation.checkInteger( (Integer) valuei, 11, "(int)");
@@ -78,8 +78,7 @@ public class HotelApplication {
         Validation.checkString( values, 5, "(string)");
         System.out.println("-----------------pas ok");
         Validation.checkString( values, 2, "(string)");
-        */
-		/*
+
         System.out.println("-----------------pas ok données");
         Validation.checkInteger( null, 6, "(Null integer)");
 		System.out.println("-----------------pas ok 0 données");
@@ -87,6 +86,7 @@ public class HotelApplication {
         System.out.println("-----------------pas ok données");
         Validation.checkString( null, 2, "string null");
         */
+
 
 
 	}
