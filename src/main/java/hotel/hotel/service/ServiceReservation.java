@@ -22,24 +22,48 @@ public class ServiceReservation {
 
     }
 
+    /**
+     * create a reservation in bdd
+     * @param reservation
+     */
     public void create(Reservation reservation){
 
         this.repo.save(reservation);
     }
 
+    /**
+     * delete a reservation
+     * @param reservation
+     */
     public void delete(Reservation reservation) {
 
         this.repo.delete(reservation);
     }
+
+    /**
+     * find a reservation with his id
+     * @param id
+     * @return
+     */
     public Reservation chooseReservationById(int id){
+
         return this.repo.getOne(id);
     }
+
+    /**
+     * update a reservation
+     * @param reservation
+     */
     public void modif(Reservation reservation) {
 
         this.repo.save(reservation);
     }
 
-
+    /**
+     * return alist of reservation for one client
+     * @param id
+     * @return list of reservation
+     */
     public List<Reservation> getReservationByIdClient(int id){
 
         List<Reservation> listReservation = new LinkedList<>();

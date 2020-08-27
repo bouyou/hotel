@@ -2,8 +2,10 @@ package hotel.hotel.utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+
 import java.util.Scanner;
 import java.util.Date;
+
 
 
 public class Validation {
@@ -44,9 +46,11 @@ public class Validation {
         response[3] =  i.toString();
 
         if(i == null || i == 0){
+            response[0] = "false";
             response[1] = "Veuillez entrer la donnée demandee";
 
-        }else if( i.compareTo(length) == 1  ) {
+        }else if( i.toString().length() > length  ) {
+            response[0] = "false";
             response[2] = "Veuillez taper moins de " + length + " caractères ";
         }
         return  response;
@@ -84,6 +88,20 @@ public class Validation {
         String m1 = response[1] != null  ?  response[1] : "";
         String m2 = response[2] != null  ?  response[2] : "";
         return  m1 + m2 + " pour ce champs " + label;
+    }
+
+    public static Integer checkNbChambre(int value){
+        String[] response = new String[3];
+        response[0] = "false";
+
+        do{
+            response = Validation.checkInteger(value, 2);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Nombre de chambres", response));
+            }
+        }while(response[0] ==  "false");
+        return value;
     }
 
     /**

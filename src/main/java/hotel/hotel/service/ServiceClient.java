@@ -56,6 +56,7 @@ public class ServiceClient {
      * @return "Client" le client choisi
      */
     public Client chooseClientById(int id){
+
         return this.clientRepository.findById(id).get();
     }
 
@@ -78,6 +79,7 @@ public class ServiceClient {
         return nbReservation>0;
 
     }
+
 
 
 }

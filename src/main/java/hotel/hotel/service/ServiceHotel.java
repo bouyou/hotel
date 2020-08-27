@@ -7,23 +7,22 @@ import org.springframework.context.ConfigurableApplicationContext;
 import java.util.Date;
 import java.util.List;
 
-public class ServiceHotel {
+public class ServiceHotel  {
 
     public HotelRepository repo;
     final ChambreRepository repochambre;
 
     /**
      * Construct
-     * @param repochambre
+     * @param
      */
-    public ServiceHotel(ChambreRepository repochambre){
+    public ServiceHotel(){
 
         String args = "";
         ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
         this.repo = context.getBean(HotelRepository.class);
         this.repochambre = context.getBean(ChambreRepository.class);;
     }
-
 
 
     /**
@@ -62,7 +61,7 @@ public class ServiceHotel {
      * @return "Hotel"
      */
     public Hotel chooseHotelById(int id){
-        return this.repo.getOne(id);
+        return this.repo.findById(id).get();
     }
 
     /**
@@ -84,4 +83,6 @@ public class ServiceHotel {
         return nbRooms.size()>0;
 
     }
+
+
 }

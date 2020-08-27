@@ -1,7 +1,15 @@
 package hotel.hotel.utils;
+
+import hotel.hotel.entities.Chambre;
 import hotel.hotel.entities.Client;
+import hotel.hotel.entities.Hotel;
+import hotel.hotel.service.ServiceChambre;
 import hotel.hotel.service.ServiceClient;
+import hotel.hotel.service.ServiceHotel;
+
+import java.sql.Date;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Menu<Static> {
@@ -38,6 +46,8 @@ public class Menu<Static> {
         while(choix!=0);
     }
 
+    //--------------------------menu client---------------------------------------
+
     private static void showGestionClient() throws ParseException {
         System.out.println("je suis dans menu Gestion Client");
         do {
@@ -69,17 +79,23 @@ public class Menu<Static> {
         Client c = new Client();
         String[] response = new String[3];
         response[0] = "false";
+
         c.setNom(Validation.checkNom());
         System.out.println("nom"  +  c.getNom());
+
         c.setPrenom(Validation.checkPrenom());
         System.out.println("prenom"  +  c.getPrenom());
+
         c.setDateNaissance(Validation.checkDateNaissance());
         System.out.println("Date de naissance (yyyy-mm-dd) : "  +  c.getDateNaissance());
+
         c.setMail(Validation.checkMail());
         System.out.println("Adresse mail : "  +  c.getMail());
+
         c.setDateAjout(new java.util.Date());
         c.setIdHotel(1);
         c.setDateModif(new java.util.Date());
+
         ServiceClient serviceClient = new ServiceClient();
         serviceClient.create(c);
 
@@ -93,16 +109,23 @@ public class Menu<Static> {
         System.out.println("je suis dans modification d'un Client");
         ServiceClient serviceClient = new ServiceClient();
         Client c = serviceClient.chooseClientById(3);
+
         c.setNom(Validation.checkNom());
         System.out.println("nom"  +  c.getNom());
+
         c.setPrenom(Validation.checkPrenom());
         System.out.println("prenom"  +  c.getPrenom());
+
         c.setDateNaissance(Validation.checkDateNaissance());
         System.out.println("Date de naissance (yyyy-mm-dd) : "  +  c.getDateNaissance());
+
         c.setMail(Validation.checkMail());
         System.out.println("Adresse mail : "  +  c.getMail());
+
         c.setDateModif(new java.util.Date());
         serviceClient.modif(c);
+
+
         System.out.println("vous avez modifie le client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
@@ -112,15 +135,18 @@ public class Menu<Static> {
         System.out.println("je suis dans supprimer un Client");
         ServiceClient serviceClient = new ServiceClient();
         Client c = serviceClient.chooseClientById(3);
+
+
         c.setNom(Validation.checkNom());
         System.out.println("nom"  +  c.getNom());
         c.setPrenom(Validation.checkPrenom());
         System.out.println("prenom"  +  c.getPrenom());
         c.setDateDelete(new java.util.Date());
         serviceClient.delete(c);
+
         System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
     }
-
+    //-------------------------menu hotel-------
     private static void showGestionHotel() throws ParseException {
         System.out.println("je suis dans menu Gestion Hotel");
         do {
@@ -147,16 +173,81 @@ public class Menu<Static> {
         while(choix!=0);
     }
 
+    /**
+     * menu pour d'ajouter un hotel
+     */
     private static void showAjoutHotel() {
-        System.out.println("je suis dansajouter un Client");
-    }
-    private static void showModifHotel() {
-        System.out.println("je suis dans modification d'un Client");
-    }
-    private static void showSupprHotel() {
-        System.out.println("je suis dans supprimer un Client");
+        System.out.println("je suis dans ajouter un Hotel");
+        Hotel h = new Hotel();
+        System.out.println("Entrez le nombre de chambres : ");
+        int value =  clavier.nextInt();
+        //appel methode pour ajouter nombre de chambres
+        h.setNbChambre(Validation.checkNbChambre(value));
+        System.out.println("Nombre de chambre enregisté"  +  h.getNbChambre());
+
+        h.setDateAjout(new java.util.Date());
+
+        ServiceHotel serviceHotel = new ServiceHotel();
+        serviceHotel.create(h);
     }
 
+    /**
+     * menu pour modifier un hotel
+     */
+    private static void showModifHotel() {
+        System.out.println("je suis dans modification d'un Hotel");
+
+        //affiche la liste des hotal
+        ServiceHotel servicehotel = new ServiceHotel();
+        List<Hotel> allHotels = servicehotel.repo.findAll();
+        for (Hotel h : allHotels) {
+            System.out.println("hotel numero:"+h.getId()+" nb de chambres:"+h.getNbChambre());
+        }
+
+        //choix de l'hotel a modifier
+        System.out.println("Choisir le numero de l'hotel à modifier");
+        Scanner scanner = new Scanner(System.in);
+        int id = scanner.nextInt();
+        //recuperation de l'hotel à modifier
+        Hotel hotel = servicehotel.chooseHotelById(id);
+        System.out.println("cet hotel a "+hotel.getNbChambre()+" chambres");
+        //modification des parametres a modifier
+        System.out.println("quel est le nouveau nombre de chambre?");
+        int nb = scanner.nextInt();
+        hotel.setNbChambre(Validation.checkNbChambre(nb));
+        hotel.setDateModif(new java.util.Date());
+        //update de l'hotel
+        ServiceHotel serviceHotel = new ServiceHotel();
+        serviceHotel.modif(hotel);
+
+    }
+
+    /**
+     * menu pour de supprimer un hotel
+     */
+    private static void showSupprHotel() {
+
+        System.out.println("je suis dans supprimer un Hotel");
+
+        //affiche liste des hotels
+        ServiceHotel servicehotel = new ServiceHotel();
+        List<Hotel> allHotels = servicehotel.repo.findAll();
+        for (Hotel h : allHotels) {
+            System.out.println("hotel numero:"+h.getId()+" nb de chambres:"+h.getNbChambre());
+        }
+        //choisir l'hotel a supprimer
+        System.out.println("Choisir l'id de l'hotel à supprimer");
+        Scanner scanner = new Scanner(System.in);
+        int id = scanner.nextInt();
+        //récupérer hotel choisi
+        Hotel hotelToDelete= servicehotel.chooseHotelById(id);
+        //supprimer cet hotel
+        servicehotel.delete(hotelToDelete);
+        System.out.println("cet hotel a été supprimé");
+    }
+
+
+    //-------------------------menu chambre -------------------------------------------------
     private static void showGestionChambre() throws ParseException {
         System.out.println("je suis dans menu Gestion Chambre");
         do {
@@ -182,17 +273,100 @@ public class Menu<Static> {
         }
         while(choix!=0);
     }
+
+    /**
+     * ajouter une chambre a la bdd
+     */
     private static void showAjoutChambre() {
         System.out.println("je suis dans ajouter une Chambre");
+        boolean canContinue = true;
+        Chambre c = new Chambre();
+
+        System.out.println("Choisissez a quel hotel cette chambre appartiendra : ");
+        //affiche la liste des hotels
+        ServiceHotel servicehotel = new ServiceHotel();
+        List<Hotel> allHotels = servicehotel.repo.findAll();
+        for (Hotel h : allHotels) {
+            System.out.println("hotel numero:"+h.getId()+" nb de chambres:"+h.getNbChambre());
+        }
+        System.out.println("Cette chambre appartiendra à l'hotel numero:");
+        int idHotel =  clavier.nextInt();
+        Hotel hotel = servicehotel.chooseHotelById(idHotel);
+        servicehotel.hotelHasChambres(idHotel);
+        ServiceChambre serviceChambre = new ServiceChambre();
+        List<Chambre> allRooms = serviceChambre.repo.getRoomByIdHotel(idHotel);
+        if(allRooms.size() == hotel.getNbChambre()){//si le nombre de chambre que contien l'hotel est egal au nombre maxi
+            System.out.println("Cet hotel a atteind son nombre maximum de chambres");
+            canContinue=false;
+        }
+
+        if(canContinue){
+            System.out.println("Combien de personnes pourra accueillir cette chambre 1,2 ou 3?");
+            int nbPax =  clavier.nextInt();
+            if (nbPax>3 | nbPax<0){
+                canContinue=false;
+            }
+
+
+            if (canContinue){
+
+                boolean again = true;
+                String num;
+                do{
+                    System.out.println("Quel sera le numero de cette chambre?");
+                    num =  clavier.next();
+
+                    for (Chambre ch : allRooms ) {
+                        if(ch.getNumero() == num){
+                            System.out.println("le numero de chambre est deja pris");
+                            again = false;
+                        }
+                    }
+                }while(!again);
+
+
+                Chambre newChambre = new Chambre();
+                newChambre.setNumero(num);
+                newChambre.setNbPax(nbPax);
+                newChambre.setIdHotel(idHotel);
+                newChambre.setDateAjout(new java.util.Date());
+                //creation de la chambre dans la bdd
+                serviceChambre.create(newChambre);
+            }
+
+        }
+
+
     }
+
     private static void showModifChambre() {
         System.out.println("je suis dans modification d'une Chambre");
     }
+
     private static void showSupprChambre() {
         System.out.println("je suis dans supprimer une Chambre");
+
+        //affiche liste des chambres
+        ServiceChambre serviceChambre = new ServiceChambre();
+        List<Chambre> allChambres = serviceChambre.repo.findAll();
+        for (Chambre c : allChambres) {
+            System.out.println("chambre id:"+c.getId()+" nb de chambres:"+c.getNumero());
+        }
+        //choisir la chambre a supprimer
+        System.out.println("Choisir l'id de la chmabre à supprimer");
+        Scanner scanner = new Scanner(System.in);
+        int id = scanner.nextInt();
+        //récupérer chambre choisi
+        Chambre chbToDelete = serviceChambre.chooseRoomById(id);
+
+
+        //supprimer cette chambre
+        serviceChambre.delete(chbToDelete);
+        System.out.println("cette chambre a été supprimé");
     }
 
-    private static void showGestionReservation() throws ParseException {
+    //----------------------------menu reservation---------------------------------------
+    private static void showGestionReservation() throws ParseException{
         System.out.println("je suis dans menu Gestion Reservation");
         do {
             System.out.println("1 : Ajouter une Reservation");
@@ -217,6 +391,7 @@ public class Menu<Static> {
         }
         while(choix!=0);
     }
+
     private static void showAjoutReservation() {
         System.out.println("je suis dans ajouter une Reservation");
     }
@@ -229,6 +404,7 @@ public class Menu<Static> {
         System.out.println("je suis dans supprimer une Reservation");
     }
 
+    //------------------------------menu quitter------------------------------------
     private static void showQuitter() {
         System.out.println("---- A BIENTOT ----");
     }
