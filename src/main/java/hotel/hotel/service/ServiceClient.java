@@ -2,6 +2,7 @@ package hotel.hotel.service;
 
 import hotel.hotel.HotelApplication;
 import hotel.hotel.entities.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ServiceHotel {
 
-    final HotelRepository repo;
+    public HotelRepository repo;
     final ChambreRepository repochambre;
 
     /**
