@@ -48,7 +48,7 @@ public class Validation {
             response[0] = "false";
             response[1] = "Veuillez entrer la donnée demandee";
 
-        }else if( i.compareTo(length) == 1  ) {
+        }else if( i.toString().length() > length  ) {
             response[0] = "false";
             response[2] = "Veuillez taper moins de " + length + " caractères ";
         }
@@ -101,14 +101,11 @@ public class Validation {
         return  m1 + m2 + " pour ce champs " + label;
     }
 
-    public static Integer checkNbChambre(){
+    public static Integer checkNbChambre(int value){
         String[] response = new String[3];
         response[0] = "false";
-        Integer value =0;
 
         do{
-            System.out.println("Entrez le nombre de chambres : ");
-            value =  clavier.nextInt();
             response = Validation.checkInteger(value, 2);
 
             if(response[0] == "false"){

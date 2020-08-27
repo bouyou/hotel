@@ -170,11 +170,16 @@ public class Menu<Static> {
         while(choix!=0);
     }
 
+    /**
+     * menu pour d'ajouter un hotel
+     */
     private static void showAjoutHotel() {
         System.out.println("je suis dans ajouter un Hotel");
         Hotel h = new Hotel();
-
-        h.setNbChambre(Validation.checkNbChambre());
+        System.out.println("Entrez le nombre de chambres : ");
+        int value =  clavier.nextInt();
+        //appel methode pour ajouter nombre de chambres
+        h.setNbChambre(Validation.checkNbChambre(value));
         System.out.println("Nombre de chambre enregisté"  +  h.getNbChambre());
 
         h.setDateAjout(new java.util.Date());
@@ -183,34 +188,57 @@ public class Menu<Static> {
         serviceHotel.create(h);
     }
 
+    /**
+     * menu pour modifier un hotel
+     */
     private static void showModifHotel() {
         System.out.println("je suis dans modification d'un Hotel");
 
+        //affiche la liste des hotal
         ServiceHotel servicehotel = new ServiceHotel();
-        System.out.println(servicehotel.repo.findAll());
-        System.out.println("Choisir l'id de l'hotel à modifier");
+        List<Hotel> allHotels = servicehotel.repo.findAll();
+        for (Hotel h : allHotels) {
+            System.out.println("hotel numero:"+h.getId()+" nb de chambres:"+h.getNbChambre());
+        }
+
+        //choix de l'hotel a modifier
+        System.out.println("Choisir le numero de l'hotel à modifier");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
+        //recuperation de l'hotel à modifier
         Hotel hotel = servicehotel.chooseHotelById(id);
         System.out.println("cet hotel a "+hotel.getNbChambre()+" chambres");
+        //modification des parametres a modifier
         System.out.println("quel est le nouveau nombre de chambre?");
         int nb = scanner.nextInt();
-        hotel.setNbChambre(Validation.checkNbChambre());
+        hotel.setNbChambre(Validation.checkNbChambre(nb));
+        hotel.setDateModif(new java.util.Date());
+        //update de l'hotel
         ServiceHotel serviceHotel = new ServiceHotel();
         serviceHotel.modif(hotel);
 
     }
 
+    /**
+     * menu pour de supprimer un hotel
+     */
     private static void showSupprHotel() {
 
         System.out.println("je suis dans supprimer un Hotel");
 
+        //affiche liste des hotels
         ServiceHotel servicehotel = new ServiceHotel();
-        System.out.println(servicehotel.repo.findAll());
+        List<Hotel> allHotels = servicehotel.repo.findAll();
+        for (Hotel h : allHotels) {
+            System.out.println("hotel numero:"+h.getId()+" nb de chambres:"+h.getNbChambre());
+        }
+        //choisir l'hotel a supprimer
         System.out.println("Choisir l'id de l'hotel à supprimer");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
+        //récupérer hotel choisi
         Hotel hotelToDelete= servicehotel.chooseHotelById(id);
+        //supprimer cet hotel
         servicehotel.delete(hotelToDelete);
         System.out.println("cet hotel a été supprimé");
     }
