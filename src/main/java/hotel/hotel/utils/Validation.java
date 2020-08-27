@@ -95,7 +95,7 @@ public class Validation {
         response[0] = "false";
 
         do{
-            response = Validation.checkInteger(value, 2);
+            response = Validation.checkInteger(value, 99);
 
             if(response[0] == "false"){
                 System.out.println(Validation.formatResponse("Nombre de chambres", response));
