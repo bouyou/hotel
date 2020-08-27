@@ -90,18 +90,22 @@ public class Validation {
         return  m1 + m2 + " pour ce champs " + label;
     }
 
-    public static Integer checkNbChambre(int value){
-        String[] response = new String[3];
-        response[0] = "false";
-
+    public static int checkNbChambre(){
+        Scanner scanner = new Scanner(System.in);
+        boolean response = false;
+        int nb;
         do{
-            response = Validation.checkInteger(value, 2);
+           System.out.println("quel est le  nombre de chambre?");
+                nb = scanner.nextInt();
+           if (nb>99){
+               System.out.println("veuillez indiquer un nombre de chambre inferieur a 100");
+           }else{
+               response = true;
+           }
+        }while(response ==false);
 
-            if(response[0] == "false"){
-                System.out.println(Validation.formatResponse("Nombre de chambres", response));
-            }
-        }while(response[0] ==  "false");
-        return value;
+
+        return nb;
     }
 
     /**

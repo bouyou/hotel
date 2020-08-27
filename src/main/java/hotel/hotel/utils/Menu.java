@@ -179,10 +179,9 @@ public class Menu<Static> {
     private static void showAjoutHotel() {
         System.out.println("je suis dans ajouter un Hotel");
         Hotel h = new Hotel();
-        System.out.println("Entrez le nombre de chambres : ");
-        int value =  clavier.nextInt();
+
         //appel methode pour ajouter nombre de chambres
-        h.setNbChambre(Validation.checkNbChambre(value));
+        h.setNbChambre(Validation.checkNbChambre());
         System.out.println("Nombre de chambre enregisté"  +  h.getNbChambre());
 
         h.setDateAjout(new java.util.Date());
@@ -197,7 +196,7 @@ public class Menu<Static> {
     private static void showModifHotel() {
         System.out.println("je suis dans modification d'un Hotel");
 
-        //affiche la liste des hotal
+        //affiche la liste des hotel
         ServiceHotel servicehotel = new ServiceHotel();
         List<Hotel> allHotels = servicehotel.repo.findAll();
         for (Hotel h : allHotels) {
@@ -210,11 +209,10 @@ public class Menu<Static> {
         int id = scanner.nextInt();
         //recuperation de l'hotel à modifier
         Hotel hotel = servicehotel.chooseHotelById(id);
+
         System.out.println("cet hotel a "+hotel.getNbChambre()+" chambres");
         //modification des parametres a modifier
-        System.out.println("quel est le nouveau nombre de chambre?");
-        int nb = scanner.nextInt();
-        hotel.setNbChambre(Validation.checkNbChambre(nb));
+        hotel.setNbChambre(Validation.checkNbChambre());
         hotel.setDateModif(new java.util.Date());
         //update de l'hotel
         ServiceHotel serviceHotel = new ServiceHotel();
@@ -299,13 +297,18 @@ public class Menu<Static> {
             System.out.println("Cet hotel a atteind son nombre maximum de chambres");
             canContinue=false;
         }
-
+        int nbPax;
         if(canContinue){
-            System.out.println("Combien de personnes pourra accueillir cette chambre 1,2 ou 3?");
-            int nbPax =  clavier.nextInt();
-            if (nbPax>3 | nbPax<0){
-                canContinue=false;
-            }
+            do{
+                System.out.println("Combien de personnes pourra accueillir cette chambre 1,2 ou 3?");
+                nbPax =  clavier.nextInt();
+                if (nbPax<3 && nbPax>0){
+                    canContinue=true;
+                }else
+                {
+                    canContinue=false;
+                }
+            }while(!canContinue);
 
 
             if (canContinue){
@@ -353,7 +356,7 @@ public class Menu<Static> {
             System.out.println("chambre id:"+c.getId()+" nb de chambres:"+c.getNumero());
         }
         //choisir la chambre a supprimer
-        System.out.println("Choisir l'id de la chmabre à supprimer");
+        System.out.println("Choisir l'id de la chambre à supprimer");
         Scanner scanner = new Scanner(System.in);
         int id = scanner.nextInt();
         //récupérer chambre choisi
