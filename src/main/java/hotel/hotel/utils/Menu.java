@@ -174,9 +174,9 @@ public class Menu<Static> {
         Hotel h = new Hotel();
 
         h.setNbChambre(Validation.checkNbChambre());
-
         System.out.println("Nombre de chambre enregisté"  +  h.getNbChambre());
 
+        h.setDateAjout(new java.util.Date());
     }
 
     private static void showModifHotel() {
