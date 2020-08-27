@@ -1,6 +1,7 @@
 package hotel.hotel.utils;
 
 import hotel.hotel.entities.Client;
+import hotel.hotel.entities.Hotel;
 import hotel.hotel.service.ServiceClient;
 
 import java.sql.Date;
@@ -41,6 +42,7 @@ public class Menu<Static> {
         while(choix!=0);
     }
 
+    //--------------------------menu client---------------------------------------
     private static void showGestionClient() {
         System.out.println("je suis dans menu Gestion Client");
         do {
@@ -126,7 +128,6 @@ public class Menu<Static> {
         System.out.println("Adresse mail : " + c.getMail());
     }
 
-
     private static void showModifClient() {
         System.out.println("je suis dans modification d'un Client");
         Client c = new Client();
@@ -167,6 +168,7 @@ public class Menu<Static> {
         System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
     }
 
+    //-------------------------menu hotel----------------------------------------------------
     private static void showGestionHotel() {
         System.out.println("je suis dans menu Gestion Hotel");
         do {
@@ -194,15 +196,24 @@ public class Menu<Static> {
     }
 
     private static void showAjoutHotel() {
-        System.out.println("je suis dansajouter un Client");
-    }
-    private static void showModifHotel() {
-        System.out.println("je suis dans modification d'un Client");
-    }
-    private static void showSupprHotel() {
-        System.out.println("je suis dans supprimer un Client");
+        System.out.println("je suis dans ajouter un Hotel");
+        Hotel h = new Hotel();
+
+        h.setNbChambre(Validation.checkNbChambre());
+
+        System.out.println("Nombre de chambre enregisté"  +  h.getNbChambre());
+
     }
 
+    private static void showModifHotel() {
+        System.out.println("je suis dans modification d'un Hotel");
+    }
+
+    private static void showSupprHotel() {
+        System.out.println("je suis dans supprimer un Hotel");
+    }
+
+    //-------------------------menu chambre -------------------------------------------------
     private static void showGestionChambre() {
         System.out.println("je suis dans menu Gestion Chambre");
         do {
@@ -228,16 +239,20 @@ public class Menu<Static> {
         }
         while(choix!=0);
     }
+
     private static void showAjoutChambre() {
         System.out.println("je suis dans ajouter une Chambre");
     }
+
     private static void showModifChambre() {
         System.out.println("je suis dans modification d'une Chambre");
     }
+
     private static void showSupprChambre() {
         System.out.println("je suis dans supprimer une Chambre");
     }
 
+    //----------------------------menu reservation---------------------------------------
     private static void showGestionReservation() {
         System.out.println("je suis dans menu Gestion Reservation");
         do {
@@ -263,6 +278,7 @@ public class Menu<Static> {
         }
         while(choix!=0);
     }
+
     private static void showAjoutReservation() {
         System.out.println("je suis dans ajouter une Reservation");
     }
@@ -275,6 +291,7 @@ public class Menu<Static> {
         System.out.println("je suis dans supprimer une Reservation");
     }
 
+    //------------------------------menu quitter------------------------------------
     private static void showQuitter() {
         System.out.println("---- A BIENTOT ----");
     }
