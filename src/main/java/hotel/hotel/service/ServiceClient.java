@@ -1,21 +1,12 @@
 package hotel.hotel.service;
-
 import hotel.hotel.HotelApplication;
 import hotel.hotel.entities.*;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.hibernate.Session;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-
-
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
+
+
 
 public class ServiceClient {
 
@@ -25,6 +16,7 @@ public class ServiceClient {
     /**
      * Construct
      */
+
     public ServiceClient() {
         String args = "";
         ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
@@ -68,6 +60,9 @@ public class ServiceClient {
      * @return "Client" le client choisi
      */
     public Client chooseClientById(int id){
+
+        //Session session =
+
         return this.clientRepository.getOne(id);
     }
 

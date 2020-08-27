@@ -114,12 +114,13 @@ public class Menu<Static> {
 
     private static void showModifClient() {
         System.out.println("je suis dans modification d'un Client");
-        Client c = new Client();
-        String[] response = new String[3];
-        response[0] = "false";
+        ServiceClient serviceClient = new ServiceClient();
+        Client c = serviceClient.chooseClientById(3);
+        System.out.println("========= : " + c.getNom());
 
+
+        /*
         c.setNom(Validation.checkNom());
-
         System.out.println("Entrez le nouveau prenom : ");
         c.setPrenom(clavier.next());
         System.out.println("Entrez la nouvelle date de naissance : ");
@@ -129,6 +130,12 @@ public class Menu<Static> {
         System.out.println("vous avez ajouter le client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
+        serviceClient.create(c);
+        */
+
+
+
+
     }
 
     private static void showSupprClient() {

@@ -9,6 +9,7 @@
 
     <jpa:repositories base-package="hotel.hotel.entities" />
 
+    <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
 
 
 
