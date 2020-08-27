@@ -13,6 +13,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.orm.jpa.vendor.HibernateJpaSessionFactoryBean;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class HotelApplication {
 
 	private static Logger logger = LoggerFactory.getLogger("HotelApplication");
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 
 		/******Dont touch !!!!!****/
 		System.setProperty("spring.devtools.restart.enabled", "false");
@@ -41,10 +42,10 @@ public class HotelApplication {
 		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
 		ChambreRepository repo = context.getBean(ChambreRepository.class);
 		List<Chambre> toto = repo.findAll();
-		System.out.println("Salut les tarlouzes !!!");
+		System.out.println("Salut les barbouzes !!!");
 		System.out.println("=nombre de chambre==> " + toto.size());
 
-		logger.info("Allez on se bouge le cul !! ");
+		logger.info("Allez on se bouge  !! ");
 		logger.debug("debugtest:");
 		logger.error("error test:");
 	    /*
