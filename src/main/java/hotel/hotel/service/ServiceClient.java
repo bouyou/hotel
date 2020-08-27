@@ -59,9 +59,9 @@ public class ServiceClient {
     }
 
 
-    public void modif(Client Client) {
-        //si le champs est different
 
+    public void modif(Client client) {
+        this.clientRepository.save(client);
     }
 
     /**
