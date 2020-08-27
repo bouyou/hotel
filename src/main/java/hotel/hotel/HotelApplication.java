@@ -1,5 +1,6 @@
 package hotel.hotel;
 import hotel.hotel.entities.*;
+import hotel.hotel.service.ServiceClient;
 import hotel.hotel.utils.Menu;
 
 import hotel.hotel.utils.Validation;
@@ -21,15 +22,13 @@ public class HotelApplication {
 
 	private static Logger logger = LoggerFactory.getLogger("HotelApplication");
 
-
-
 	public static void main(String[] args) {
 
 		/******Dont touch !!!!!****/
 		System.setProperty("spring.devtools.restart.enabled", "false");
 		SpringApplication.run(HotelApplication.class, args);
 		//Menu
-		Menu.showMainMenu();
+		//Menu.showMainMenu();
 		/******* Fin dont touch *****/
 
 
@@ -89,6 +88,7 @@ public class HotelApplication {
         */
 
 
+
 	}
 
     /**
@@ -114,5 +114,6 @@ public class HotelApplication {
 				    chambreRepository.findAll().forEach(System.out::println);
 		};
 	}*/
+
 
 }

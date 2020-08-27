@@ -5,12 +5,16 @@ import hotel.hotel.entities.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-import java.text.DateFormat;
+
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Scanner;
 
 public class ServiceClient {
 
@@ -58,8 +62,18 @@ public class ServiceClient {
 
     }
 
+    /**
+     * methode qui permet de récupérer un client avec son id
+     * @return "Client" le client choisi
+     */
+    public Client chooseClientById(int id){
+        return this.clientRepository.getOne(id);
+    }
 
-
+    /**
+     * enregistre les modificatiosn du client
+     * @param client
+     */
     public void modif(Client client) {
         this.clientRepository.save(client);
     }
