@@ -40,7 +40,7 @@ public class ServiceClient {
     public void delete(Client client) {
         //si le client a des reservation
         if (clientHasReservation(client.getId())){ // on archive le client
-
+            client.setDateModif(new java.util.Date());
             client.setDateDelete(new Date());
             this.clientRepository.save(client);
 

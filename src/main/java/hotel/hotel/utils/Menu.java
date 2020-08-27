@@ -6,15 +6,15 @@ import hotel.hotel.entities.Hotel;
 import hotel.hotel.service.ServiceChambre;
 import hotel.hotel.service.ServiceClient;
 import hotel.hotel.service.ServiceHotel;
-
-import java.sql.Date;
 import java.text.ParseException;
 import java.util.List;
 import java.util.Scanner;
 
 public class Menu<Static> {
+
     public static Scanner clavier = new Scanner(System.in);
     public static Integer choix;
+    public static ServiceClient serviceClient = new ServiceClient();
 
     public static void showMainMenu() throws ParseException {
         System.out.println("---- BIENVENUE ----");
@@ -44,6 +44,14 @@ public class Menu<Static> {
             break;
         }
         while(choix!=0);
+    }
+
+
+    /**
+     *
+     */
+    private static void showClientList(){
+        serviceClient.clientRepository.findAll().forEach(System.out::println);
     }
 
     //--------------------------menu client---------------------------------------
@@ -95,8 +103,6 @@ public class Menu<Static> {
         c.setDateAjout(new java.util.Date());
         c.setIdHotel(1);
         c.setDateModif(new java.util.Date());
-
-        ServiceClient serviceClient = new ServiceClient();
         serviceClient.create(c);
 
         System.out.println("Vous avez ajouter le client : " + c.getNom() + " " + c.getPrenom());
@@ -104,11 +110,12 @@ public class Menu<Static> {
         System.out.println("Adresse mail : " + c.getMail());
     }
 
-
     private static void showModifClient() throws ParseException {
         System.out.println("je suis dans modification d'un Client");
-        ServiceClient serviceClient = new ServiceClient();
-        Client c = serviceClient.chooseClientById(3);
+        //Show list client
+        showClientList();
+        System.out.println("Choisissez id");
+        Client c = serviceClient.chooseClientById(clavier.nextInt());
 
         c.setNom(Validation.checkNom());
         System.out.println("nom"  +  c.getNom());
@@ -125,7 +132,6 @@ public class Menu<Static> {
         c.setDateModif(new java.util.Date());
         serviceClient.modif(c);
 
-
         System.out.println("vous avez modifie le client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
@@ -133,17 +139,10 @@ public class Menu<Static> {
 
     private static void showSupprClient() {
         System.out.println("je suis dans supprimer un Client");
-        ServiceClient serviceClient = new ServiceClient();
-        Client c = serviceClient.chooseClientById(3);
-
-
-        c.setNom(Validation.checkNom());
-        System.out.println("nom"  +  c.getNom());
-        c.setPrenom(Validation.checkPrenom());
-        System.out.println("prenom"  +  c.getPrenom());
-        c.setDateDelete(new java.util.Date());
+        showClientList();
+        System.out.println("Choisissez id");
+        Client c = serviceClient.chooseClientById(clavier.nextInt());
         serviceClient.delete(c);
-
         System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
     }
     //-------------------------menu hotel-------

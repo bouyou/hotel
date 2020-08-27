@@ -104,8 +104,8 @@ public class HotelApplication {
 
 		return (String[] args) -> {
 
-			Optional<Client> a  = clientRepository.findById(3);
-			System.out.println("-----------------" + a.get().getNom());
+			//Optional<Client> a  = clientRepository.findById(3);
+			//System.out.println("-----------------" + a.get().getNom());
 
 
 			//Chambre a  = chambreRepository.getOne(20);
@@ -125,8 +125,8 @@ public class HotelApplication {
 					Chambre a  = chambreRepository.save(c);
 
 				*/
-			chambreRepository.findAll().forEach(System.out::println);
-			clientRepository.findAll().forEach(System.out::println);
+			//chambreRepository.findAll().forEach(System.out::println);
+			//clientRepository.findAll().forEach(System.out::println);
 
 		};
 
