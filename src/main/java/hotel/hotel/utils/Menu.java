@@ -83,7 +83,7 @@ public class Menu<Static> {
     }
 
     private static void showAjoutClient() throws ParseException {
-        System.out.println("je suis dans ajouter un Client");
+        System.out.println("Menu ajouter un Client");
         Client c = new Client();
         String[] response = new String[3];
         response[0] = "false";
@@ -98,13 +98,13 @@ public class Menu<Static> {
         c.setDateModif(new java.util.Date());
         serviceClient.create(c);
 
-        System.out.println("Vous avez ajouter le client : " + c.getNom() + " " + c.getPrenom());
+        System.out.println("Vous avez ajouté le client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
     }
 
     private static void showModifClient() throws ParseException {
-        System.out.println("je suis dans modification d'un Client");
+        System.out.println("Menu modification d'un Client");
         //Show list client
         showClientList();
         System.out.println("Choisissez id");
@@ -129,11 +129,11 @@ public class Menu<Static> {
         System.out.println("Choisissez id");
         Client c = serviceClient.chooseClientById(clavier.nextInt());
         serviceClient.delete(c);
-        System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
+        System.out.println("vous avez supprime le client : " + c.getNom() + " " + c.getPrenom());
     }
     //-------------------------menu hotel-------
     private static void showGestionHotel() throws ParseException {
-        System.out.println("je suis dans menu Gestion Hotel");
+        System.out.println("Menu Gestion Hotel");
         do {
             System.out.println("1 : Ajouter un Hotel");
             System.out.println("2 : Modifier un Hotel");
