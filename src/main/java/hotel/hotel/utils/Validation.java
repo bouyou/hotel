@@ -1,7 +1,10 @@
 package hotel.hotel.utils;
 
+
 import java.util.Scanner;
-import java.util.Scanner;
+import java.sql.Date;
+
+import static java.util.Date.*;
 
 public class Validation {
 
@@ -62,7 +65,7 @@ public class Validation {
         do{
             System.out.println("Entrez le nom : ");
             value =  clavier.next();
-            response = Validation.checkString(value, 2);
+            response = Validation.checkString(value, 255);
 
             if(response[0] == "false"){
                 System.out.println(Validation.formatResponse("Nom", response));
@@ -94,6 +97,66 @@ public class Validation {
         String m2 = response[2] != null  ?  response[2] : "";
 
         return  m1 + m2 + " pour ce champs " + label;
+    }
+
+    /**
+     * check prenom
+     * @return string
+     */
+    public static String checkPrenom() {
+        String[] response = new String[3];
+        response[0] = "false";
+        String value ="";
+        do{
+            System.out.println("Entrez le prenom : ");
+            value =  clavier.next();
+            response = Validation.checkString(value, 255);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Prenom", response));
+            }
+        }while(response[0] ==  "false");
+        return value;
+    }
+
+    /**
+     * check Date Naissance
+     * @return Date
+     */
+    public static Date checkDateNaissance() {
+        String[] response = new String[3];
+        response[0] = "false";
+        String value ="";
+        do{
+            System.out.println("Entrez la date de naissance : ");
+            value =  clavier.next();
+            response = Validation.checkString(value, 10);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Date de naissance", response));
+            }
+        }while(response[0] ==  "false");
+        return Date.valueOf(value);
+    }
+
+    /**
+     * Check mail
+     * @return string
+     */
+    public static String checkMail() {
+        String[] response = new String[3];
+        response[0] = "false";
+        String value ="";
+        do{
+            System.out.println("Entrez l'adresse mail : ");
+            value =  clavier.next();
+            response = Validation.checkString(value, 50);
+
+            if(response[0] == "false"){
+                System.out.println(Validation.formatResponse("Adresse mail", response));
+            }
+        }while(response[0] ==  "false");
+        return value;
     }
 
 }
