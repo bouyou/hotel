@@ -10,7 +10,6 @@ import java.util.Date;
 
 public class Validation {
 
-
     public static Scanner clavier = new Scanner(System.in);
     /**
      * checkString
@@ -32,7 +31,6 @@ public class Validation {
             response[0] = "false";
             response[2] = "Veuillez taper moins de " + length + " caractères ";
         }
-
         return  response;
     }
 
@@ -87,20 +85,8 @@ public class Validation {
      */
     public static String formatResponse(String label, String[] response ){
 
-        /*
-        System.out.println("0 -> " + response[0]);
-        System.out.println("1 -> " + response[1]);
-        System.out.println("2 -> " + response[2]);
-        /*
-        System.out.println("0 -> " + m0);
-        System.out.println("1 -> " + m1);
-        System.out.println("2 -> " + m2);
-        */
-
-
         String m1 = response[1] != null  ?  response[1] : "";
         String m2 = response[2] != null  ?  response[2] : "";
-
         return  m1 + m2 + " pour ce champs " + label;
     }
 

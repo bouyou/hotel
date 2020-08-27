@@ -106,7 +106,6 @@ public class Menu<Static> {
 
 
     private static void showModifClient() throws ParseException {
-
         System.out.println("je suis dans modification d'un Client");
         ServiceClient serviceClient = new ServiceClient();
         Client c = serviceClient.chooseClientById(3);
@@ -147,10 +146,8 @@ public class Menu<Static> {
 
         System.out.println("vous avez supprimé le client : " + c.getNom() + " " + c.getPrenom());
     }
-
-
-    //-------------------------menu hotel----------------------------------------------------
-        private static void showGestionHotel() throws ParseException {
+    //-------------------------menu hotel-------
+    private static void showGestionHotel() throws ParseException {
         System.out.println("je suis dans menu Gestion Hotel");
         do {
             System.out.println("1 : Ajouter un Hotel");
