@@ -1,5 +1,6 @@
 package hotel.hotel;
 import hotel.hotel.entities.*;
+import hotel.hotel.service.ServiceClient;
 import hotel.hotel.utils.Menu;
 
 import hotel.hotel.utils.Validation;
@@ -10,10 +11,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
-
-import java.util.Date;
+import java.text.ParseException;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Optional;
+
 
 
 @SpringBootApplication
@@ -21,9 +22,7 @@ public class HotelApplication {
 
 	private static Logger logger = LoggerFactory.getLogger("HotelApplication");
 
-
-
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ParseException {
 
 		/******Dont touch !!!!!****/
 		System.setProperty("spring.devtools.restart.enabled", "false");
@@ -36,18 +35,14 @@ public class HotelApplication {
 
 		/*****Tests*****/
 
-
-
-
-
 		//Example
 		ConfigurableApplicationContext context = SpringApplication.run(HotelApplication.class, args);
 		ChambreRepository repo = context.getBean(ChambreRepository.class);
 		List<Chambre> toto = repo.findAll();
-		System.out.println("Salut les tarlouzes !!!");
+		System.out.println("Salut les barbouzes !!!");
 		System.out.println("=nombre de chambre==> " + toto.size());
 
-		logger.info("Allez on se bouge le cul !! ");
+		logger.info("Allez on se bouge  !! ");
 		logger.debug("debugtest:");
 		logger.error("error test:");
 	    /*
@@ -66,7 +61,7 @@ public class HotelApplication {
 		//System.out.println("value ?");
 		//Scanner scanner = new Scanner(System.in);
 
-        /*
+		/*
 		int valuei =  10; //scanner.nextInt();
         System.out.println("-----------------ok");
 		Validation.checkInteger( (Integer) valuei, 11, "(int)");
@@ -82,8 +77,7 @@ public class HotelApplication {
         Validation.checkString( values, 5, "(string)");
         System.out.println("-----------------pas ok");
         Validation.checkString( values, 2, "(string)");
-        */
-		/*
+
         System.out.println("-----------------pas ok données");
         Validation.checkInteger( null, 6, "(Null integer)");
 		System.out.println("-----------------pas ok 0 données");
@@ -93,7 +87,11 @@ public class HotelApplication {
         */
 
 
+
 	}
+
+
+
 
     /**
      * Method test rapide ( se lance avant le main )
@@ -101,22 +99,38 @@ public class HotelApplication {
 	private static ChambreRepository  chambreRepository;
 
 
-	/*
 	@Bean
-	public CommandLineRunner run(ChambreRepository chambreRepository) throws Exception {
+	public CommandLineRunner run(ChambreRepository chambreRepository, ClientRepository clientRepository) throws Exception {
 
 		return (String[] args) -> {
 
+			//Optional<Client> a  = clientRepository.findById(3);
+			//System.out.println("-----------------" + a.get().getNom());
+
+
+			//Chambre a  = chambreRepository.getOne(20);
+			//System.out.println("-----------------" + a.getNumero());
+			//a.setNbPax(10);
+			//chambreRepository.save(a);
+
+			/*
 			Chambre c = new Chambre();
 					c.setNbPax(1);
 					c.setDateAjout(new Date());
-					c.setDateModif(new Date());
+					c.setDateModif(new Date());0
+
 					c.setIdHotel(1);
 					c.setNumero("1245");
 
 					Chambre a  = chambreRepository.save(c);
-				    chambreRepository.findAll().forEach(System.out::println);
+
+				*/
+			//chambreRepository.findAll().forEach(System.out::println);
+			//clientRepository.findAll().forEach(System.out::println);
+
 		};
-	}*/
+
+	}
+
 
 }

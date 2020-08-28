@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name = "reservation")
@@ -135,4 +135,6 @@ public class Reservation implements Serializable {
     public void setIdClient(Integer idClient) {
         this.idClient = idClient;
     }
+
+
 }
