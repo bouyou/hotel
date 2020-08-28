@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ServiceChambre {
+public class ServiceChambre  {
 
     public ChambreRepository repo;
 

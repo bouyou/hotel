@@ -89,17 +89,9 @@ public class Menu<Static> {
         response[0] = "false";
 
         c.setNom(Validation.checkNom());
-        System.out.println("nom"  +  c.getNom());
-
         c.setPrenom(Validation.checkPrenom());
-        System.out.println("prenom"  +  c.getPrenom());
-
         c.setDateNaissance(Validation.checkDateNaissance());
-        System.out.println("Date de naissance (yyyy-mm-dd) : "  +  c.getDateNaissance());
-
         c.setMail(Validation.checkMail());
-        System.out.println("Adresse mail : "  +  c.getMail());
-
         c.setDateAjout(new java.util.Date());
         c.setIdHotel(1);
         c.setDateModif(new java.util.Date());
@@ -118,17 +110,9 @@ public class Menu<Static> {
         Client c = serviceClient.chooseClientById(clavier.nextInt());
 
         c.setNom(Validation.checkNom());
-        System.out.println("nom"  +  c.getNom());
-
         c.setPrenom(Validation.checkPrenom());
-        System.out.println("prenom"  +  c.getPrenom());
-
         c.setDateNaissance(Validation.checkDateNaissance());
-        System.out.println("Date de naissance (yyyy-mm-dd) : "  +  c.getDateNaissance());
-
         c.setMail(Validation.checkMail());
-        System.out.println("Adresse mail : "  +  c.getMail());
-
         c.setDateModif(new java.util.Date());
         serviceClient.modif(c);
 
