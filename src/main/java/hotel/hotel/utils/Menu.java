@@ -97,7 +97,7 @@ public class Menu<Static> {
         c.setDateModif(new java.util.Date());
         serviceClient.create(c);
 
-        System.out.println("Vous avez ajouter le client : " + c.getNom() + " " + c.getPrenom());
+        System.out.println("Ajout du client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
     }
@@ -116,13 +116,13 @@ public class Menu<Static> {
         c.setDateModif(new java.util.Date());
         serviceClient.modif(c);
 
-        System.out.println("vous avez modifie le client : " + c.getNom() + " " + c.getPrenom());
+        System.out.println("Modification du client : " + c.getNom() + " " + c.getPrenom());
         System.out.println("Date de naissance : " + c.getDateNaissance());
         System.out.println("Adresse mail : " + c.getMail());
     }
 
     private static void showSupprClient() {
-        System.out.println("je suis dans supprimer un Client");
+        System.out.println("je suis dans suppression d'un Client");
         showClientList();
         System.out.println("Choisissez id");
         Client c = serviceClient.chooseClientById(clavier.nextInt());
