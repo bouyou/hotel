@@ -141,7 +141,7 @@ public class Validation {
                 System.out.println(Validation.formatResponse("Date de naissance", response));
             }
         }while(response[0] ==  "false");
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy", Locale.ENGLISH);
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.FRANCE);
         return formatter.parse(value);
     }
 
